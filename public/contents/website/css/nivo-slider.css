@@ -1,0 +1,432 @@
+.nivoSlider {
+	position:relative;
+	width:100%;
+	height:auto;
+	overflow: hidden;
+}
+.nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	max-width: none;
+}
+.nivo-main-image {
+	display: block !important;
+	position: relative !important; 
+	width: 100% !important;
+}
+
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	border:0;
+	padding:0;
+	margin:0;
+	z-index:6;
+	display:none;
+	background:white; 
+	filter:alpha(opacity=0); 
+	opacity:0;
+}
+/* The slices and boxes in the Slider */
+.nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:5;
+	height:100%;
+	top:0;
+}
+.nivo-box {
+	display:block;
+	position:absolute;
+	z-index:5;
+	overflow:hidden;
+}
+.nivo-box img { display:block; }
+
+/* Caption styles */
+.nivo-caption {
+  box-sizing: border-box;
+  color: #ffffff;
+  display: none;
+  left: 0;
+  opacity: 1;
+  overflow: hidden;
+  padding: 5px 10px;
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  z-index: 99;
+}
+.nivo-caption p {
+	padding:5px;
+	margin:0;
+}
+.nivo-caption a {
+	display:inline !important;
+}
+.nivo-html-caption {
+    display:none;
+}
+
+.slider-content-wrap {
+  position: absolute;
+  max-width: 1140px;
+  height: 100%;
+  width: 100%;
+}
+
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a {
+	position:absolute;
+	top:45%;
+	z-index:9;
+	cursor:pointer;
+}
+.nivo-prevNav {
+	left:0px;
+}
+.nivo-nextNav {
+	right:0px;
+}
+/* Control nav styles (e.g. 1,2,3...) */
+.nivo-controlNav {
+	text-align:center;
+	padding: 15px 0;
+}
+.nivo-controlNav a {
+	cursor:pointer;
+}
+.nivo-controlNav a.active {
+	font-weight:bold;
+}
+/* ------------------------------
+Default Theme
+---------------------------------*/
+.slider-direction {
+	position: absolute;
+	left:0; 
+	top:0;  
+	width: 100%;
+	background: none;
+	color: #fff;
+	font-size: 16px;
+	z-index: 999;
+	display: none;
+}
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    border:0;
+    padding:0;
+    margin:0;
+    z-index:6;
+    display:none;
+    background:white; 
+    filter:alpha(opacity=0); 
+    opacity:0;
+}
+/* The slices and boxes in the Slider */
+.nivo-slice {
+    display:block;
+    position:absolute;
+    z-index:5;
+    height:100%;
+    top:0;
+}
+.nivo-box {
+    display:block;
+    position:absolute;
+    z-index:5;
+    overflow:hidden;
+}
+.nivo-box img { display:block; }
+.nivo-caption {
+    height: 100%;
+}
+.nivo-main-image {
+    display: block !important;
+    position: relative !important; 
+    width: 100% !important;
+}
+/* The slices and boxes in the Slider */
+.nivo-slice {
+    display:block;
+    position:absolute;
+    z-index:5;
+    height:100%;
+    top:0;
+}
+.nivo-box {
+    display:block;
+    position:absolute;
+    z-index:5;
+    overflow:hidden;
+}
+@-webkit-keyframes myfirst {
+  from {width: 0;}
+  to {width: 100%;}
+ }
+ @keyframes myfirst {
+  from {width: 0;}
+  to {width: 100%;}
+}
+ .slider-progress.pos_hover{
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+ }
+/* ------------------------------
+custom slider
+---------------------------------*/
+.slider-progress{
+	position:absolute;
+	bottom:0px;
+	left:0;
+	background-color: rgba(0, 0, 0, .15);
+	height:5px;
+	-webkit-animation: myfirst 5000ms ease-in-out;
+	-moz-animation: myfirst 5000ms ease-in-out;
+	-ms-animation: myfirst 5000ms ease-in-out;
+	animation: myfirst 5000ms ease-in-out;
+}
+.s-tb{
+	display: table;
+	height: 100%;
+	width: 100%;
+	float: left;
+}
+.s-tb-c{
+	display: table-cell;
+    vertical-align: middle;
+}
+.t-cn{text-align: center}
+.t-lft{text-align: left}
+.t-lfr{text-align: right}
+
+/*=================================================== 
+    Sliders Styles
+===================================================== */
+/* -------Home-1 -------*/
+.home1 .slider-content h2, .home1 .slider-content h2, .home1 .slider-content h3{color:#fff;}
+.home1 .slider-content h2{
+  font-size: 80px;	
+  display: inline-block;
+  font-weight: 500;	
+  line-height: 70px;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 26px;  
+}
+.home1 .slider-content h2 span {
+  font-weight: 800;
+}
+.home1 .slider-content h2::before{
+  background: #ffffff none repeat scroll 0 0;
+  bottom: -15px;
+  content: "";	
+  position: absolute;	
+  height: 1px;
+  left: 0;
+  margin-left: -5%;
+  width: 110%;  
+}
+.home1 .slider-content h3{
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 7px;
+  position: relative;
+  text-transform: uppercase;
+}
+a.slider-btn, a.slider-btn2{
+  border: 2px solid #ffffff !important;
+  color: #ffffff !important;
+  display: inline-block !important;
+  font-size: 16px;
+  font-weight: 700;
+  height: 40px !important;
+  letter-spacing: 1px;
+  line-height: 40px !important;
+  margin: 0 5px;
+  padding: 0 30px;
+  text-transform: uppercase;
+}
+a.slider-btn:hover, a.slider-btn2:hover{
+	background:#DA4234;
+	border: 2px solid #DA4234 !important;
+}
+/* -------Home-2 -------*/
+.home2 .slider-content h2, .home2 .slider-content h2, .home2 .slider-content h3 {color:#4a4a4a;}
+.home2 .slider-content h2 {
+  display: inline-block;
+  font-size: 80px;
+  font-weight: 500;
+  left: 0;
+  letter-spacing: 1px;
+  line-height: 70px;
+  position: relative;
+  text-transform: uppercase;
+}
+.home2 .slider-content h2::before {
+  background: #4a4a4a none repeat scroll 0 0;
+  bottom: -15px;
+  content: "";
+  height: 5px;
+  left: 7px;
+  position: absolute;
+  width: 98.8%;
+}
+.home2 .slider-content h3, .home2 .slider-content h3 {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  left: 0;
+  letter-spacing: 3px;
+  overflow: hidden;
+  position: relative;
+  text-transform: uppercase;
+  width: 100%;
+  margin-left: 5px;
+}
+.home2 .slider-content .slider-btns{
+  display: inline-block;
+  left: 0;
+  position: relative;
+}
+.home2 a.slider-btn, .home2 a.slider-btn2{
+	background:#A2A2A2;
+	border:2px solid #A2A2A2 !important;
+}
+.home2 a.slider-btn:hover, .home2 a.slider-btn2:hover{
+	background:#DA4234;
+	border: 2px solid #DA4234 !important;
+}
+
+/* -------Home-3 -------*/
+.home3 .slider-content h2, .home3 .slider-content h2, .home3 .slider-content h3 {color:#fff;}
+.home3 .slider-content h2 {
+  display: inline-block;
+  font-size: 80px;
+  font-weight: 500;
+  left: -5px;
+  letter-spacing: 1px;
+  line-height: 70px;
+  position: relative;
+  text-transform: uppercase;
+}
+.home3 .slider-content h2::before {
+  background: #fff none repeat scroll 0 0;
+  bottom: -15px;
+  content: "";
+  height: 5px;
+  left: 7px;
+  position: absolute;
+  width: 98.8%;
+}
+.home3 .slider-content h3, .home3 .slider-content h3 {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  left: 0;
+  letter-spacing: 3px;
+  overflow: hidden;
+  position: relative;
+  text-transform: uppercase;
+  width: 100%;
+}
+.home3 .slider-content .slider-btns{
+  display: inline-block;
+  left:0;
+  position: relative;
+}
+/*=======================================================
+  Sliders Animation
+=========================================================*/
+
+/* -------------- Home 1  ---------------- */
+
+/* Slider 1 Animation */
+.home1 .slider-content h1{
+        -webkit-animation: flipInY 1000ms ease-in-out;
+     -moz-animation: flipInY 1000ms ease-in-out;
+    -ms-animation: flipInY 1000ms ease-in-out;
+    animation: flipInY 1000ms ease-in-out;
+}
+
+.home1 .slider-content h3{
+        -webkit-animation: flipInX 1500ms ease-in-out;
+    -moz-animation: flipInX 1500ms ease-in-out;
+    -ms-animation: flipInX 1500ms ease-in-out;
+    animation: flipInX 1500ms ease-in-out;
+}
+.slider-content a.slider-btn{
+        -webkit-animation: bounceInLeft 2500ms ease-in-out;
+    -moz-animation: bounceInLeft 2500ms ease-in-out;
+    -ms-animation: bounceInLeft 2500ms ease-in-out;
+    animation: bounceInLeft 2500ms ease-in-out;
+}
+.slider-content a.slider-btn2{
+        -webkit-animation: bounceInRight 2500ms ease-in-out;
+    -moz-animation: bounceInRight 2500ms ease-in-out;
+    -ms-animation: bounceInRight 2500ms ease-in-out;
+    animation: bounceInRight 2500ms ease-in-out;
+}
+/* -------------- Home 2  ---------------- */
+.home2 .slider-content h1{
+        -webkit-animation: fadeInLeft 500ms ease-in-out;
+    -moz-animation: fadeInLeft 500ms ease-in-out;
+    -ms-animation: fadeInLeft 500ms ease-in-out;
+    animation: fadeInLeft 500ms ease-in-out;
+}
+.home2 .slider-content h3{
+        -webkit-animation: fadeInLeft 1500ms ease-in-out;
+    -moz-animation: fadeInLeft 1500ms ease-in-out;
+    -ms-animation: fadeInLeft 1500ms ease-in-out;
+    animation: fadeInLeft 1500ms ease-in-out;
+}
+
+/* -------------- Home 3  ---------------- */
+.home3 .slider-content h1{
+	-webkit-animation: fadeInLeft 500ms ease-in-out;
+    -moz-animation: fadeInLeft 500ms ease-in-out;
+    -ms-animation: fadeInLeft 500ms ease-in-out;
+    animation: fadeInLeft 500ms ease-in-out;
+}
+.home3 .slider-content h3{
+	-webkit-animation: fadeInLeft 1500ms ease-in-out;
+    -moz-animation: fadeInLeft 1500ms ease-in-out;
+    -ms-animation: fadeInLeft 1500ms ease-in-out;
+    animation: fadeInLeft 1500ms ease-in-out;
+}
+.home3 .slider-content h1{
+	-webkit-animation: bounceInUp 1000ms ease-in-out;
+    -moz-animation: bounceInUp 1000ms ease-in-out;
+    -ms-animation: bounceInUp 1000ms ease-in-out;
+    animation: bounceInUp 1000ms ease-in-out;
+}
+.home3 .slider-content h3{
+	-webkit-animation: fadeInLeft 1500ms ease-in-out;
+    -moz-animation: fadeInLeft 1500ms ease-in-out;
+    -ms-animation: fadeInLeft 1500ms ease-in-out;
+    animation: fadeInLeft 1500ms ease-in-out;
+}
+.home3 .slider-content h1{
+	-webkit-animation: fadeInRight 500ms ease-in-out;
+    -moz-animation: fadeInRight 500ms ease-in-out;
+    -ms-animation: fadeInRight 500ms ease-in-out;
+    animation: fadeInRight 500ms ease-in-out;
+}
+.home3 .slider-content h3{
+	-webkit-animation: fadeInRight 1500ms ease-in-out;
+    -moz-animation: fadeInRight 1500ms ease-in-out;
+    -ms-animation: fadeInRight 1500ms ease-in-out;
+    animation: fadeInRight 1500ms ease-in-out;
+}
