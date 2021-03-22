@@ -7,56 +7,119 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+<p align="center">
+	<img src="/public/img/logo.png" width="200"/>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+    <a href="https://github.com/intelligo-systems/laravel-ecommerce/issues">
+        <img src="https://img.shields.io/github/issues/intelligo-systems/laravel-ecommerce.svg"
+            alt="Issues"></a>
+     <a href="https://github.com/intelligo-systems/laravel-ecommerce/fork">
+        <img src="https://img.shields.io/github/forks/intelligo-systems/laravel-ecommerce.svg?style=social&label=Fork"
+            alt="Forks"></a>
+    <a href="https://github.com/intelligo-systems/laravel-ecommerce/stargazers">
+        <img src="https://img.shields.io/github/stars/intelligo-systems/laravel-ecommerce.svg?style=social&label=Stars"
+            alt="Stars"></a>
+    <a href="https://github.com/tortuvshin/">
+        <img src="https://img.shields.io/github/followers/tortuvshin.svg?style=social&label=Follow"
+            alt="Followers"></a>
+    <a href="https://raw.githubusercontent.com/opengineer/laravel-ecommerce/master/LICENSE">
+        <img src="https://img.shields.io/badge/license-MIT-blue.svg"
+            alt="LICENSE"></a>
+    <a href="https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D">
+        <img src="https://img.shields.io/twitter/url/https/github.com/topengineer/laravel-ecommerce.svg?style=social"
+            alt="Tweet"></a>
+	  <a href="http://hits.dwyl.io/intelligo-system/intelligo">
+    <img alt="Hits" src="http://hits.dwyl.io/intelligo-system/intelligo.svg">
+ </a>
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Laravel Ecommerce Platform
 
-## Learning Laravel
+This is a e-commerce platform I made mostly using Laravel 5.4
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+| [Features][] | [Requirements][] | [Install][] | [How to setting][] | [Contributors][] | [License][] |
+|---|---|---|---|---|---|
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Features 
+- Automatic cross sell / up sell / related product offerings
+- Open Source
+- Ecommerce Solution
 
-## Laravel Sponsors
+## Requirements
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+	PHP >= 5.6.4
+	MySQL >= 5.7
+	OpenSSL PHP Extension
+	PDO PHP Extension
+	Mbstring PHP Extension
+	Tokenizer PHP Extension
+	XML PHP Extension
 
-### Premium Partners
+## Install
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+Clone repo
 
-## Contributing
+```
+git clone https://github.com/Md-shefat-masum/Laravel-Ecommerce.git
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Install Composer
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+[Download Composer](https://getcomposer.org/download/)
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+composer update/install 
+
+```
+composer install
+```
+
+Install Nodejs
+
+
+[Download Node.js](https://nodejs.org/en/download/)
+
+
+NPM dependencies
+```
+npm install
+```
+
+Using Laravel Mix 
+
+```
+npm run dev
+```
+
+## How to setting 
+
+Go into .env file and change Database and Email credentials.
+
+```
+php artisan migrate
+```
+
+```
+php artisan db:seed
+```
+	
+Generating a New Application Key
+```
+php artisan key:generate
+```
+
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+> Copyright (C) 2021 HungryCoders.  
+**[⬆ back to top](#laravel-ecommerce-platform)**
+
+[Features]:#features
+[Requirements]:#requirements
+[Install]:#install
+[How to setting]:#how-to-setting
+[License]:#license
