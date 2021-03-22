@@ -13,7 +13,7 @@
 This is a e-commerce platform I made mostly using Laravel ^8.3
 
 | [Features][] | [Requirements][] | [Install][] | [How to setting][] | [License][] |
-|---|---|---|---|---|---|
+
 
 ## Features 
 - Automatic cross sell / up sell / related product offerings
