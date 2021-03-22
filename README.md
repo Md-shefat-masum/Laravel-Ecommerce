@@ -22,13 +22,8 @@ This is a e-commerce platform I made mostly using Laravel ^8.3
 
 ## Requirements
 
-	PHP >= 5.6.4
-	MySQL >= 5.7
-	OpenSSL PHP Extension
-	PDO PHP Extension
-	Mbstring PHP Extension
-	Tokenizer PHP Extension
-	XML PHP Extension
+	PHP = ^7.3|^8.0
+    laravel-ui = ^3.2
 
 ## Install
 
