@@ -1,5 +1,5 @@
 <div class="">
-    <input type="text" name="{{ $name }}" class="form-control"  placeholder="{{ $name }}" />
+    <input type="{{ $type }}" name="{{ $name }}" class="form-control"  placeholder="{{ $name }}" />
     <span class="text-danger {{ $name }}"></span>
     <style>
         .price{

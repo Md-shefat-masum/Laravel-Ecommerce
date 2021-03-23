@@ -5,7 +5,9 @@
                 <option {{ $key==0?'selected':'' }} value="{{ $item->id }}">{{ $item->name }}</option>
             @endforeach
         </select>
-        <button class="btn btn-info" data-toggle="modal" data-target="#{{$name}}Modal" type="button" title="add new brand"><i class="fa fa-plus"></i></button>
+        <button class="btn btn-info" data-toggle="modal" data-target="#{{$name}}Modal" type="button" title="add new brand">
+            <i class="fa fa-plus"></i>
+        </button>
     </div>
     <span class="text-danger {{ $name }}"></span>
 </div>
