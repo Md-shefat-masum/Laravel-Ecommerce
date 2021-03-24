@@ -21,3 +21,101 @@
 .select2-container .select2-selection--multiple {
   height: unset;
 }
+.modal-content {
+  background: #1515158a;
+}
+.fm_image_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.fm_image_list li {
+  list-style-type: none;
+  padding: 15px;
+}
+.fm_image_list li .image_body {
+  overflow: hidden;
+  height: 150px;
+  width: 150px;
+  position: relative;
+}
+.fm_image_list li .image_body .fm_checkbox {
+  position: absolute;
+  height: 24px;
+  left: 11px;
+  width: 24px;
+  top: 11px;
+  cursor: pointer;
+}
+.fm_image_list li .image_body .controls {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 10px;
+  right: 10px;
+  background: #192f3a;
+}
+.fm_image_list li .image_body .controls i {
+  text-align: center;
+  display: block;
+  width: 100%;
+  line-height: 30px;
+  padding: 0;
+  cursor: pointer;
+}
+.fm_image_list li .image_body .controls ul {
+  height: 0;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  transition: all linear 0.3s;
+  right: 0;
+  background: #8a8a8ad9;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  justify-content: center;
+  text-align: center;
+}
+.fm_image_list li .image_body .controls ul li a {
+  display: inline-block;
+  border: 1px solid white;
+  padding: 4px;
+  border-radius: 5px;
+  font-size: 12px;
+  transition: all linear 0.3s;
+}
+.fm_image_list li .image_body .controls ul li a i {
+  font-size: 15px;
+}
+.fm_image_list li .image_body .controls ul li a:hover {
+  background: #192f3a;
+  color: white;
+}
+.fm_image_list li .image_body .controls:hover ul {
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+  width: auto;
+}
+.fm_image_list li .image_body img {
+  width: 100%;
+}
+.fm_file_importer {
+  width: 100%;
+}
+.price {
+  font-size: unset;
+}
+.input_file_body {
+  position: relative;
+}
+.input_file_body .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 99;
+}

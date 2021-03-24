@@ -323,13 +323,17 @@
         </div>
     </div>
 
+    {{-- file mananger --}}
+    @once
+        @include('admin.product.components.file_manager')
+    @endonce
 
-    <!-- Bootstrap core JavaScript-->
+
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
         @csrf
     </form>
 
-
+    <!-- Bootstrap core JavaScript-->
 
     <script src="{{ asset('contents/admin') }}/js/popper.min.js"></script>
     <script src="{{ asset('contents/admin') }}/js/bootstrap.min.js"></script>

@@ -1,12 +1,10 @@
 <?php
 
-use App\Http\Controllers\WebsiteController;
-use App\Models\Category;
-use App\Models\MainCategory;
-use App\Models\SubCategory;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +108,17 @@ Route::group( [
 
 
 Route::group( [
+        'prefix'=>'file-manager',
+        'middleware'=>['auth'],
+        'namespace'=>'Admin'
+    ],function(){
+
+        Route::post('/store-file','FileManagerController@store_file')->name('admin_fm_store_file');
+        Route::get('/get-files','FileManagerController@get_files')->name('admin_fm_get_files');
+        Route::delete('/delete-file/{image}','FileManagerController@delete_file')->name('admin_fm_delete_file');
+});
+
+Route::group( [
         'prefix'=>'blank',
         'middleware'=>['auth'],
         'namespace'=>'Admin'
@@ -121,7 +130,7 @@ Route::group( [
         Route::get('/view','AdminController@blade_view')->name('admin_blade_view');
 });
 
-Route::get('/test',function(){
+Route::get('/test',function(Request $request){
 
 })->name('route name');
 
