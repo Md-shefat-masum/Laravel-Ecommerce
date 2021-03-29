@@ -28,6 +28,7 @@ class CreateMainCategoriesTable extends Migration
             $table->increments('id');
             $table->integer('main_category_id');
             $table->integer('product_id');
+            $table->timestamps();
         });
     }
 

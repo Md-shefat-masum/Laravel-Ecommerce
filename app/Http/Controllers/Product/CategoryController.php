@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\MainCategory;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -145,6 +146,18 @@ class CategoryController extends Controller
         $categories = Category::where('main_category_id',$main_category_id)->get();
         $option = "";
         foreach ($categories as $key => $value) {
+            $id = $value->id;
+            $name = $value->name;
+            $option.= "<option".($key==0?' selected ':'')." value='$id' >$name</option>";
+        }
+        return $option;
+    }
+
+    public function get_sub_category_by_category($category_id)
+    {
+        $sub_categories = SubCategory::where('category_id',$category_id)->get();
+        $option = "";
+        foreach ($sub_categories as $key => $value) {
             $id = $value->id;
             $name = $value->name;
             $option.= "<option".($key==0?' selected ':'')." value='$id' >$name</option>";

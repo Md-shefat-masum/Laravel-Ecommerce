@@ -102,6 +102,7 @@ Route::group( [
     Route::resource('vendor','VendorController');
 
     Route::get('/get-all-cateogory-selected-by-main-category/{main_category_id}','CategoryController@get_category_by_main_category')->name('get_all_cateogory_selected_by_main_category');
+    Route::get('/get-all-sub-cateogory-selected-by-category/{category_id}','CategoryController@get_sub_category_by_category')->name('get_all_sub_category_by_category');
     Route::get('/get-all-main-category-josn','MainCategoryController@get_main_category_json')->name('get_main_category_json');
     Route::get('/get-all-category-josn','CategoryController@get_category_json')->name('get_category_json');
 });
@@ -130,7 +131,8 @@ Route::group( [
         Route::get('/view','AdminController@blade_view')->name('admin_blade_view');
 });
 
-Route::get('/test',function(Request $request){
+Route::post('/test',function(Request $request){
 
+    dd($request->all());
 })->name('route name');
 

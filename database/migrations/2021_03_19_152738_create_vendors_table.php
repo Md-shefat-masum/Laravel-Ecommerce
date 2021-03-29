@@ -32,6 +32,7 @@ class CreateVendorsTable extends Migration
             $table->integer('product_id')->nullable();
             $table->integer('vendor_id')->nullable();
             $table->timestamps();
+            $table->timestamps();
         });
     }
 

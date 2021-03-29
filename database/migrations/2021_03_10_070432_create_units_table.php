@@ -27,6 +27,7 @@ class CreateUnitsTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->integer('unit_id');
+            $table->timestamps();
         });
     }
 

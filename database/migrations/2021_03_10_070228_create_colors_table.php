@@ -27,6 +27,7 @@ class CreateColorsTable extends Migration
             $table->increments('id');
             $table->integer('color_id');
             $table->integer('product_id');
+            $table->timestamps();
         });
     }
 

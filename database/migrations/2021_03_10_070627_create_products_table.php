@@ -32,7 +32,7 @@ class CreateProductsTable extends Migration
             $table->string('thumb_image',100)->nullable();
 
             $table->string('creator',100)->nullable();
-            $table->string('slug',100)->nullable();
+            $table->text('slug')->nullable();
             $table->string('status')->default('active');
             $table->timestamps();
         });

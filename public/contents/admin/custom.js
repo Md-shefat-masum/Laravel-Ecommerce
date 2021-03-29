@@ -42,8 +42,9 @@ $(function(){
             type: 'POST',
             data: formData,
             success: (res)=>{
-                console.log(res);
+                // console.log(res);
                 $(this).trigger('reset');
+                $('.product_insert_form select').val('').trigger('change')
                 $('.note-editable').html('');
                 $('.preloader').hide();
                 toaster('success','data inserted successfully.');
@@ -226,15 +227,19 @@ $(function(){
     })
 
     let selected_image = [];
+    let selected_image_id = [];
     const activate_image_function = () => {
         selected_image = [];
         $('.fm_checkbox').on('click',function(){
             let value = $(this).data('name');
+            let value_Id = $(this).val();
             let check_exist = selected_image.includes(value);
             if(check_exist){
-                selected_image = selected_image.filter(name=>name != value)
+                selected_image = selected_image.filter(name=>name != value);
+                selected_image_id = selected_image_id.filter(id=>id != value_Id);
             }else{
                 selected_image.push(value);
+                selected_image_id.push(value_Id);
             }
             // console.log(value,selected_image);
         })
@@ -248,7 +253,8 @@ $(function(){
                 $(selected_file_input).val(selected_image[0]);
                 $(selected_file_input).siblings('img').attr('src','/'+selected_image[0]);
             }else{
-                $(selected_file_input).val(JSON.stringify(selected_image));
+                // $(selected_file_input).val(JSON.stringify(selected_image));
+                $(selected_file_input).val(JSON.stringify(selected_image_id));
                 $(selected_file_input).siblings('img').remove();
                 for (let index = 0; index < selected_image.length; index++) {
                     const element = selected_image[index];
@@ -259,8 +265,21 @@ $(function(){
         }else{
             toaster('error','no file selected');
         }
-    })
+    });
 
+    $('.product_main_category').on('change',function(){
+        let value = $(this).val();
+        $.get('/admin/product/get-all-cateogory-selected-by-main-category/'+value,(res)=>{
+            $('.product_category').html(res);
+            $('.product_sub_category').html('');
+        });
+    })
+    $('.product_category').on('change',function(){
+        let value = $(this).val();
+        $.get('/admin/product/get-all-sub-cateogory-selected-by-category/'+value,(res)=>{
+            $('.product_sub_category').html(res);
+        });
+    })
 
 
 })

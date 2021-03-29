@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <div class="card-title">Add Product</div>
                             <hr />
-                            <form class="insert_form row" method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
+                            <form class="insert_form product_insert_form row" method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="preloader"></div>
                                 <div class="form-group col-md-6 col-xl-4">
@@ -42,7 +42,7 @@
                                     @include('admin.product.components.select',[
                                         'name' => 'product_main_category_id',
                                         'attributes' => '',
-                                        'class' => 'multiple-select',
+                                        'class' => 'multiple-select product_main_category',
                                         'collection' => $maincategories,
                                         'action' => route('main_category.store'),
                                         'fields' => [
@@ -57,7 +57,7 @@
                                     @include('admin.product.components.select',[
                                         'name' => 'product_category_id',
                                         'attributes' => 'multiple',
-                                        'class' => 'multiple-select',
+                                        'class' => 'multiple-select product_category',
                                         'collection' => $categories,
                                         'action' => route('category.store'),
                                         'fields' => [
@@ -73,7 +73,7 @@
                                     @include('admin.product.components.select',[
                                         'name' => 'product_sub_category_id',
                                         'attributes' => 'multiple',
-                                        'class' => 'multiple-select',
+                                        'class' => 'multiple-select product_sub_category',
                                         'collection' => $sub_categories,
                                         'action' => route('sub_category.store'),
                                         'fields' => [
@@ -81,7 +81,7 @@
                                                 'name' => 'main_category_id',
                                                 'type' => 'select',
                                                 'option_route'=>route('get_main_category_json'),
-                                                'class' => 'component_modal_main_category parent_select',
+                                                'class' => 'component_modal_main_category',
                                                 'this_field_will_contorl' => 'component_modal_category',
                                                 'this_field_control_route' => route('get_all_cateogory_selected_by_main_category',''),
                                                 // 'this_field_control_route' => '',
@@ -195,7 +195,16 @@
                                     <label for="" class=" col-form-label">Price</label>
                                     @include('admin.product.components.input',[
                                         'name' => 'price',
-                                        'type' => 'text'
+                                        'type' => 'number',
+                                        'attr' => "step='0.01'"
+                                    ])
+                                </div>
+
+                                <div class="form-group col-md-6 col-xl-4">
+                                    <label for="" class=" col-form-label">Tax</label>
+                                    @include('admin.product.components.input',[
+                                        'name' => 'tax',
+                                        'type' => 'number'
                                     ])
                                 </div>
 
@@ -269,12 +278,23 @@
                                     ])
                                 </div>
 
+
                                 <div class="form-group col-md-6  col-xl-4">
                                     <label for="" class="col-form-label">Staus</label>
                                     <div class="">
                                         <select name="status"  class="form-control">
                                             <option value="draft">Draft</option>
                                             <option value="active">Active</option>
+                                        </select>
+                                        <span class="text-danger status"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6  col-xl-4">
+                                    <label for="" class="col-form-label">Free Delivery</label>
+                                    <div class="">
+                                        <select name="free_delivery"  class="form-control">
+                                            <option value="false">Off</option>
+                                            <option value="true">Onn</option>
                                         </select>
                                         <span class="text-danger status"></span>
                                     </div>

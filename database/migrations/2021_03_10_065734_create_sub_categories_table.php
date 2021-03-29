@@ -30,6 +30,7 @@ class CreateSubCategoriesTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->integer('sub_category_id');
+            $table->timestamps();
         });
     }
 
