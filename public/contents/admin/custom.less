@@ -42,7 +42,7 @@
             width: 150px;
             position: relative;
 
-            .fm_checkbox{
+            .fm_checkbox {
                 position: absolute;
                 height: 24px;
                 left: 11px;
@@ -82,8 +82,9 @@
                     padding: 0;
                     justify-content: center;
                     text-align: center;
-                    li{
-                        a{
+
+                    li {
+                        a {
                             display: inline-block;
                             border: 1px solid white;
                             padding: 4px;
@@ -91,11 +92,11 @@
                             font-size: 12px;
                             transition: all linear .3s;
 
-                            i{
+                            i {
                                 font-size: 15px;
                             }
 
-                            &:hover{
+                            &:hover {
                                 background: #192f3a;
                                 color: white;
                             }
@@ -103,8 +104,8 @@
                     }
                 }
 
-                &:hover{
-                    ul{
+                &:hover {
+                    ul {
                         opacity: 1;
                         visibility: visible;
                         height: auto;
@@ -120,7 +121,7 @@
     }
 }
 
-.fm_file_importer{
+.fm_file_importer {
     width: 100%;
 }
 
@@ -139,4 +140,27 @@
         top: 0;
         z-index: 99;
     }
+}
+
+.product-discount {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: black;
+    height: 47px;
+    width: 47px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 47px;
+}
+
+ul {
+    padding: 0;
+    li {
+        list-style-type: none;
+    }
+}
+
+.card .table td, .card .table th{
+    vertical-align: middle;
 }

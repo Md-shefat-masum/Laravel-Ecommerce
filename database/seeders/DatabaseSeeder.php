@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
         Vendor::truncate();
         Product::truncate();
         Image::truncate();
+        Status::truncate();
 
         // \App\Models\User::factory(10)->create();
 
@@ -527,42 +528,49 @@ class DatabaseSeeder extends Seeder
         $data = [
             [
                 'name'=>strtolower('Active'),
+                'serial'=>1,
                 'creator'=>1,
                 'slug' => str::slug(strtolower('active')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name'=>strtolower('Pending'),
+                'serial'=>2,
                 'creator'=>1,
                 'slug' => str::slug(strtolower('Pending')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name'=>strtolower('processing'),
+                'serial'=>3,
                 'creator'=>1,
                 'slug' => str::slug(strtolower('processing')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name'=>strtolower('shipping'),
+                'serial'=>4,
                 'creator'=>1,
                 'slug' => str::slug(strtolower('shipping')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name'=>strtolower('delivered'),
+                'serial'=>5,
                 'creator'=>1,
                 'slug' => str::slug(strtolower('delivered')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name'=>strtolower('canceled'),
+                'serial'=>6,
                 'creator'=>1,
                 'slug' => str::slug(strtolower('canceled')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name'=>strtolower('draft'),
+                'serial'=>7,
                 'creator'=>1,
                 'slug' => str::slug(strtolower('draft')),
                 'created_at' => Carbon::now()->toDateTimeString()
@@ -624,7 +632,7 @@ class DatabaseSeeder extends Seeder
         $product->total_view = rand(50,200);
         $product->description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, molestias!";
         $product->features = "<ul><li>Lorem ipsum dolor</li><li>Lorem ipsum dolor</li><li>Lorem ipsum dolor</li><li>Lorem ipsum dolor</li></ul>";
-        $product->thumb_image = "/dummy_products/".rand(1,18).".jpg";
+        $product->thumb_image = "dummy_products/".rand(1,18).".jpg";
         $product->creator = 1;
         $product->created_at = Carbon::now()->toDateTimeString();
         $product->save();

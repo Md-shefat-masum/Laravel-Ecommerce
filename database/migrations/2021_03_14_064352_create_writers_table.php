@@ -41,5 +41,6 @@ class CreateWritersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('writers');
+        Schema::dropIfExists('product_writer');
     }
 }

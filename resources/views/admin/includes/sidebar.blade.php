@@ -36,6 +36,9 @@
         </a>
         <ul class="">
             <li>
+                <a href="{{ route('product.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> All Product</a>
+            </li>
+            <li>
                 <a href="{{ route('product.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Add Product</a>
             </li>
             <li>

@@ -32,7 +32,6 @@ class CreateVendorsTable extends Migration
             $table->integer('product_id')->nullable();
             $table->integer('vendor_id')->nullable();
             $table->timestamps();
-            $table->timestamps();
         });
     }
 
@@ -44,5 +43,6 @@ class CreateVendorsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('vendors');
+        Schema::dropIfExists('product_vendor');
     }
 }

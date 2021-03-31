@@ -8,6 +8,7 @@ $(function(){
                     url:$(this).attr('href'),
                     type:'delete',
                     success:(res)=>{
+                        $(this).parents($(this).data('parent')).remove();
                         $(this).parents('tr').remove();
                         $(this).parents('li').remove();
                         Toast.fire({
@@ -42,7 +43,7 @@ $(function(){
             type: 'POST',
             data: formData,
             success: (res)=>{
-                // console.log(res);
+                console.log(res);
                 $(this).trigger('reset');
                 $('.product_insert_form select').val('').trigger('change')
                 $('.note-editable').html('');
@@ -142,7 +143,7 @@ $(function(){
             type : "POST",
             data : formData,
             success : (res)=>{
-                // console.log(target_select);
+                console.log(res.html);
                 $('.component_preloader').hide();
                 toaster('success','data inserted successfully.');
                 $('.modal').modal('hide');
@@ -274,6 +275,7 @@ $(function(){
             $('.product_sub_category').html('');
         });
     })
+
     $('.product_category').on('change',function(){
         let value = $(this).val();
         $.get('/admin/product/get-all-sub-cateogory-selected-by-category/'+value,(res)=>{

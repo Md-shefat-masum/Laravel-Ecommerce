@@ -40,5 +40,6 @@ class CreateMainCategoriesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('main_categories');
+        Schema::dropIfExists('main_category_product');
     }
 }

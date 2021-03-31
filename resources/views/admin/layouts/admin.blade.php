@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <!-- Mirrored from codervent.com/dashtremev3/pages-blank-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2020 09:42:04 GMT -->
     <head>
         <meta charset="utf-8" />
         <!-- CSRF Token -->

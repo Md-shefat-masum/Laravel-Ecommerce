@@ -10,6 +10,7 @@ use App\Models\MainCategory;
 use App\Models\Product;
 use App\Models\Publication;
 use App\Models\Size;
+use App\Models\Status;
 use App\Models\SubCategory;
 use App\Models\Unit;
 use App\Models\Vendor;
@@ -28,7 +29,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product.index');
+        $collection = Product::active()->with(['category', 'sub_category', 'main_category', 'color', 'image', 'publication', 'size', 'unit', 'vendor', 'writer'])
+                                ->orderBy('id','DESC')->paginate(10);
+        return view('admin.product.index',compact('collection'));
     }
 
     /**
@@ -45,6 +48,7 @@ class ProductController extends Controller
         $writers = Writer::where('status', 1)->get();
         $publications = Publication::where('status', 1)->get();
         $vendors = Vendor::where('status', 1)->get();
+        $status = Status::where('status', 1)->get();
 
         $maincategories = MainCategory::where('status', 1)->get();
         $latest_maincategory_id = MainCategory::where('status', 1)->first()->id;
@@ -67,7 +71,8 @@ class ProductController extends Controller
             'sub_categories',
             'writers',
             'publications',
-            'vendors'
+            'vendors',
+            'status'
         ));
     }
 
@@ -116,6 +121,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->features = $request->features;
         $product->thumb_image = $request->thumb_image;
+        $product->status = $request->status;
         $product->creator = Auth::user()->id;
         $product->save();
 
@@ -132,7 +138,7 @@ class ProductController extends Controller
             $product->category()->attach($request->product_category_id);
         }
 
-        if ($request->has('sub_category_id')) {
+        if ($request->has('product_sub_category_id')) {
             $product->sub_category()->attach($request->product_sub_category_id);
         }
 
@@ -153,7 +159,7 @@ class ProductController extends Controller
         }
 
         if ($request->has('unit_id')) {
-            $product->size()->attach($request->unit_id);
+            $product->unit()->attach($request->unit_id);
         }
 
         if ($request->has('related_images')) {
@@ -161,7 +167,7 @@ class ProductController extends Controller
         }
 
         if ($request->has('vendor_id')) {
-            $product->size()->attach($request->vendor_id);
+            $product->vendor()->attach($request->vendor_id);
         }
         return Product::with(['category', 'sub_category', 'main_category', 'color', 'image', 'publication', 'size', 'unit', 'vendor', 'writer'])
                         ->latest()->first();
@@ -173,9 +179,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        return view('admin.product.view');
+        return view('admin.product.view',compact('product'));
     }
 
     /**
@@ -184,9 +190,43 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        // dd($product->minimum_amount);
+        $brands = Brand::where('status', 1)->get();
+        $colors = Color::where('status', 1)->get();
+        $sizes = Size::where('status', 1)->get();
+        $units = Unit::where('status', 1)->get();
+        $writers = Writer::where('status', 1)->get();
+        $publications = Publication::where('status', 1)->get();
+        $vendors = Vendor::where('status', 1)->get();
+        $status = Status::where('status', 1)->get();
+
+        $maincategories = MainCategory::where('status', 1)->get();
+        $latest_maincategory_id = $product->main_category()->first() ? $product->main_category()->first()->id : MainCategory::where('status', 1)->first()->id;
+
+        $categories = Category::where('status', 1)->where('main_category_id', $latest_maincategory_id)->latest()->get();
+        $latest_category_id = Category::where('status', 1)->where('main_category_id', $latest_maincategory_id)->first()->id;
+
+        $sub_categories = SubCategory::where('status', 1)
+            ->where('main_category_id', $latest_maincategory_id)
+            ->where('category_id', $latest_category_id)
+            ->latest()->get();
+
+        return view('admin.product.edit',compact(
+            'product',
+            'brands',
+            'colors',
+            'sizes',
+            'units',
+            'maincategories',
+            'categories',
+            'sub_categories',
+            'writers',
+            'publications',
+            'vendors',
+            'status'
+        ));
     }
 
     /**
@@ -196,9 +236,90 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $this->validate($request, [
+            'product_name' => ['required'],
+            'brand' => ['required'],
+            'product_main_category_id' => ['required'],
+            'product_category_id' => ['required'],
+            'product_sub_category_id' => ['required'],
+            'color_id' => ['required'],
+            'size_id' => ['required'],
+            'unit_id' => ['required'],
+            'vendor_id' => ['required'],
+            'price' => ['required'],
+            'discount' => ['required'],
+            'expiration_date' => ['required'],
+            'stock' => ['required'],
+            'alert_quantity' => ['required'],
+            'description' => ['required'],
+            'features' => ['required'],
+            'thumb_image' => ['required'],
+            'related_images' => ['required'],
+            'status' => ['required'],
+        ]);
+
+        $product->name = $request->product_name;
+        $product->brand_id = $request->brand;
+        $product->tax = $request->tax;
+        $product->price = $request->price;
+        $product->sku = '';
+        $product->stock = $request->stock;
+        $product->discount = $request->discount;
+        $product->expiration_date = $request->expiration_date;
+        $product->minimum_amount = $request->alert_quantity;
+        $product->free_delivery = $request->free_delivery;
+        $product->description = $request->description;
+        $product->features = $request->features;
+        $product->thumb_image = $request->thumb_image;
+        $product->status = $request->status;
+        $product->creator = Auth::user()->id;
+        $product->save();
+
+        if ($request->has('product_main_category_id')) {
+            $product->main_category()->sync($request->product_main_category_id);
+        }
+
+        if ($request->has('product_category_id')) {
+            $product->category()->sync($request->product_category_id);
+        }
+
+        if ($request->has('product_sub_category_id')) {
+            $product->sub_category()->sync($request->product_sub_category_id);
+        }
+
+        if ($request->has('writer_id')) {
+            $product->writer()->sync($request->writer_id);
+        }
+
+        if ($request->has('publication_id')) {
+            $product->publication()->sync($request->publication_id);
+        }
+
+        if ($request->has('color_id')) {
+            $product->color()->sync($request->color_id);
+        }
+
+        if ($request->has('size_id')) {
+            $product->size()->sync($request->size_id);
+        }
+
+        if ($request->has('unit_id')) {
+            $product->unit()->sync($request->unit_id);
+        }
+
+        if ($request->has('related_images')) {
+            $product->image()->sync(json_decode($request->related_images));
+        }
+
+        if ($request->has('vendor_id')) {
+            $product->vendor()->sync($request->vendor_id);
+        }
+
+        return Product::where('id',$product->id)->with(['category', 'sub_category', 'main_category', 'color', 'image', 'publication', 'size', 'unit', 'vendor', 'writer'])
+                        ->latest()->first();
+
     }
 
     /**
@@ -207,8 +328,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->status = 0;
+        $product->save();
+        return 'success';
     }
 }

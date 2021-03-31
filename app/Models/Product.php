@@ -10,6 +10,26 @@ class Product extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public static function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo('App\Models\Status','status','serial');
+    }
+
+    public function brand_info()
+    {
+        return $this->belongsTo('App\Models\Brand','brand_id');
+    }
+
+    public function creator_info()
+    {
+        return $this->belongsTo('App\Models\User','creator');
+    }
+
     public function category()
     {
         return $this->belongsToMany('App\Models\Category')->withTimestamps();
