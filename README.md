@@ -71,7 +71,9 @@ php artisan migrate
 ```
 
 ```
-php artisan db:seed
+php artisan db:seed --class=UserSeeder
+php artisan db:seed --class=UserRoleSeeder
+php artisan db:seed --class=DatabaseSeeder
 ```
 	
 Generating a New Application Key

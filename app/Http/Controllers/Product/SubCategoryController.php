@@ -62,7 +62,10 @@ class SubCategoryController extends Controller
         $sub_category->creator = Auth::user()->id;
         $sub_category->save();
 
-        return 'success';
+        return response()->json([
+            'html' => "<option value='".$sub_category->id."'>".$sub_category->name."</option>",
+            'value' => $sub_category->id,
+        ]);
     }
 
     /**

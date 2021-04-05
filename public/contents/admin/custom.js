@@ -1,5 +1,9 @@
 $(function(){
 
+    // remover action on navbar dropdown menu
+    $('.has-arrow').on('click',(e)=>e.preventDefault());
+
+    // rerender delete function on ajax load html
     const init_delete_function = () => {
         $('.delete_btn').off().on('click',function(e){
             e.preventDefault();
@@ -23,6 +27,7 @@ $(function(){
 
     init_delete_function();
 
+    // remove alert on foucus input fields
     $('input').on('focus',function(e){
         $(this).siblings('span').html('');
     });
@@ -35,6 +40,7 @@ $(function(){
         $(this).siblings('span').html('');
     });
 
+    // all insert form ajax
     $('.insert_form').on('submit',function(e){
         e.preventDefault();
         let formData = new FormData($(this)[0]);
@@ -68,6 +74,7 @@ $(function(){
         })
     });
 
+    // all update form ajax
     $('.update_form').on('submit',function(e){
         e.preventDefault();
         let formData = new FormData($(this)[0]);
@@ -97,6 +104,7 @@ $(function(){
         })
     });
 
+    // component form ajax
     $('.component_form_submit').off().on('click',function(){
         let form = $(this).parents('.component_form');
         let target_select = $(this).parents('.component_form').data('target_select');
@@ -143,7 +151,7 @@ $(function(){
             type : "POST",
             data : formData,
             success : (res)=>{
-                console.log(res.html);
+                // console.log(res.html,action);
                 $('.component_preloader').hide();
                 toaster('success','data inserted successfully.');
                 $('.modal').modal('hide');
@@ -173,6 +181,7 @@ $(function(){
         // console.log(form, action, inputs, textareas, temp_form);
     });
 
+    // if another select option change on one select
     $('.parent_select').off().on('change',function(){
         let value = $(this).val();
         let control_url = $(this).data('this_field_control_route');
@@ -183,6 +192,7 @@ $(function(){
         })
     })
 
+    // load option form modal component select
     $('.load_options').on('click',function(e){
         e.preventDefault();
         let url = $(this).data('url');
@@ -195,6 +205,8 @@ $(function(){
             }
         });
     });
+
+    // file manager ajax
 
     const get_all_image = () =>{
         $.get('/file-manager/get-files',(res)=>{
@@ -268,6 +280,7 @@ $(function(){
         }
     });
 
+    // product main category ajax
     $('.product_main_category').on('change',function(){
         let value = $(this).val();
         $.get('/admin/product/get-all-cateogory-selected-by-main-category/'+value,(res)=>{
@@ -276,6 +289,7 @@ $(function(){
         });
     })
 
+    // product category ajax
     $('.product_category').on('change',function(){
         let value = $(this).val();
         $.get('/admin/product/get-all-sub-cateogory-selected-by-category/'+value,(res)=>{

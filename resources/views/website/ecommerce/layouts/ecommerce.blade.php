@@ -41,6 +41,16 @@
 
         <!-- Modernizr JS -->
         <script src="{{ asset('contents/website') }}/js/vendor/modernizr-2.8.3.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script>
+            function toaster(icon, message){
+                Toast.fire({
+                    icon: icon,
+                    title: message,
+                })
+            }
+        </script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -48,7 +58,8 @@
         <![endif]-->
 
         <!-- header start -->
-        <div class="main-wrapper box-shadow">
+        @include('include.flash')
+        <div class="main-wrapper box-shadow" id="app">
             <header class="clearfix">
                 <div class="header-top-area bb hidden-xs">
                     <div class="container">
@@ -108,9 +119,7 @@
                 </div>
             </header>
 
-
             @yield('content')
-
 
             <!-- order-area start -->
             <div class="order-area box-shadow ptb-30 bb bg-fff">
@@ -299,6 +308,97 @@
 
         <!-- Placed js at the end of the document so the pages load faster -->
         <!-- jquery latest version -->
+        <script src="/js/app.js"></script>
+
+        {{-- @section('vuejs')
+        <script>
+            Vue.component('input-vue',{
+                props: [
+                    'value',
+                    'color1',
+                    'color2',
+                    'color3',
+                ],
+                template: `
+                    <div class="form-group" style="margin-bottom: 30px">
+                        <input type="text" :value="value" class="form-control mb-5">
+                        <span :style="'margin: 0px 10px; height: 40px;width: 40px;background: '+color1+';display: inline-block;'"></span>
+                        <span :style="'margin: 0px 10px; height: 40px;width: 40px;background: '+color2+';display: inline-block;'"></span>
+                        <span :style="'margin: 0px 10px; height: 40px;width: 40px;background: '+color3+';display: inline-block;'"></span>
+                    </div>
+                `,
+            });
+            const app = new Vue({
+                el: "#app",
+                mounted: function(){
+                    console.log('mounted');
+                },
+                created: function(){
+                    $.get('/json/latest-products-json',(res)=>{
+                        console.log(res);
+                        this.products = res.data;
+                    })
+                },
+                data: function(){
+                    return {
+                        modal_view_product : {
+                            name: '',
+                            price: '',
+                            thumb_image: '',
+                        },
+                        total_cart_product: 0,
+                        cart_products: [],
+                        cart_total_price: 0,
+                        products: [],
+                    }
+                },
+                methods: {
+                    set_modal_product: function(product){
+                        console.log(product);
+                        this.modal_view_product = product;
+                    },
+                    set_cart: function(product){
+                        this.total_cart_product++;
+
+                        let product_check = this.cart_products.find((item)=>item.id === product.id);
+
+                        if(product_check){
+                            product_check.qty++;
+                        }else{
+                            let cart_info = {
+                                name: product.name,
+                                id: product.id,
+                                image: product.thumb_image,
+                                price: product.price,
+                                qty: 1,
+                            };
+                            this.cart_products.push(cart_info);
+                        }
+
+                        this.calculate_total();
+                    },
+                    remove_cart: function(product){
+                        this.cart_products = this.cart_products.filter((item)=>{
+                            if(item.id === product.id){
+                                this.total_cart_product -= product.qty;
+                            }
+                            return item.id !== product.id;
+                        });
+                        this.calculate_total();
+                    },
+                    calculate_total: function(){
+                        this.cart_total_price = this.cart_products.reduce((total,product)=>{
+                            return total + (product.price * product.qty);
+                        },0)
+                    },
+
+                },
+            })
+        </script>
+        @endsection --}}
+
+        {{-- <script src="{{ asset('contents/website') }}/js/vue.js"></script> --}}
+
         <script src="{{ asset('contents/website') }}/js/vendor/jquery-1.12.4.min.js"></script>
         <!-- Popper js -->
         <script src="{{ asset('contents/website') }}/js/popper.js"></script>
@@ -324,6 +424,12 @@
         <script src="{{ asset('contents/website') }}/js/plugins.js"></script>
         <!-- Main js file that contents all jQuery plugins activation. -->
         <script src="{{ asset('contents/website') }}/js/main.js"></script>
+
+
+        @yield('vuejs')
+
+
+
     </body>
 
 </html>

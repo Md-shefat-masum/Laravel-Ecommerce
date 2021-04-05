@@ -17,9 +17,17 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-xl-9 col-lg-9 col-md-12 col-12">
                     <div class="row">
+                        <div class="col-12">
+                            <div id="app_product_details">
+                                <product-details :product="{{$product}}"></product-details>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="row">
                         <div class="col-lg-5">
                             <div class="symple-product mb-20">
                                 <div class="single-product-tab  box-shadow mb-20">
@@ -68,13 +76,6 @@
                                 </div>
                                 <div class="single-product-menu mb-30 box-shadow">
                                     <div class="single-product-active clear owl-carousel owl-theme owl-loaded">
-
-
-
-
-
-
-
 
                                     <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 896px;"><div class="owl-item active" style="width: 112px; margin-right: 0px;"><div class="single-img floatleft">
                                             <a href="#one" data-toggle="tab">
@@ -296,7 +297,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="product box-shadow mtb-50 bg-fff">
                         <div class="product-title home2-product-title home2-bg-1 text-uppercase">
                             <i class="fa fa-star-o icon bg-4"></i>

@@ -4,7 +4,6 @@
             <!-- slider area start -->
             @include('website.ecommerce.home_include.slider')
 
-
             <div class="all-product-area mtb-45">
                 <div class="container">
                     <div class="row">
@@ -25,24 +24,20 @@
                             @include('website.ecommerce.home_include.newsletter')
                             <!-- newsletter-area start -->
                         </div>
+
                         <!-- product-area start -->
                         <div class="col-xl-9 col-lg-9 col-md-12 col-12">
 
-                            <div class="product box-shadow bg-fff">
-                                <div class="product-title home3-bg text-uppercase">
-                                    <i class="fa fa-paper-plane-o icon home3-bg2"></i>
-                                    <h3>New Products</h3>
-                                </div>
-                                <div class="left left-right-angle">
-                                    <div class="row">
-                                        @for ($i = 0; $i < 4; $i++)
-                                            <div class="col-md-3">
-                                                @include('website.ecommerce.product.home_product_body')
-                                            </div>
-                                        @endfor
-                                    </div>
-                                </div>
-                            </div>
+                            {{-- vue product --}}
+                            {{-- <div id="app">
+                                <product-list
+                                    v-bind:url_get="'{{ route('product_show_product_json','') }}'"
+                                    v-bind:url="'{{ route('product_latest_product_json') }}'">
+                                </product-list>
+                            </div> --}}
+
+                            {{-- bootstrap --}}
+                            <home-section></home-section>
 
                             <!-- banner-area start -->
                             <div class="banner-area mtb-35">

@@ -1,6 +1,6 @@
 <ul class="metismenu" id="menu">
     <li>
-        <a class="has-arrow" href="javascript:void();">
+        <a class="has-arrow" href="#">
             <div class="parent-icon"><i class="zmdi zmdi-view-dashboard"></i></div>
             <div class="menu-title">Dashboard</div>
         </a>
@@ -13,7 +13,7 @@
 
     @if (Auth::user()->role_id == 1)
         <li>
-            <a class="has-arrow" href="javascript:void();">
+            <a class="has-arrow" href="#">
                 <div class="parent-icon"><i class="zmdi zmdi-view-dashboard"></i></div>
                 <div class="menu-title">User Management</div>
             </a>
@@ -30,7 +30,7 @@
 
 
     <li>
-        <a class="has-arrow" href="javascript:void();">
+        <a class="has-arrow" href="#">
             <div class="parent-icon"><i class="fa fa-shopping-cart"></i></div>
             <div class="menu-title">Product Management</div>
         </a>
@@ -80,7 +80,7 @@
     </li>
 
     <li>
-        <a class="has-arrow" href="javascript:void();">
+        <a class="has-arrow" href="#">
             <div class="parent-icon"><i class="zmdi zmdi-view-dashboard"></i></div>
             <div class="menu-title">Blank Pages</div>
         </a>
@@ -116,7 +116,7 @@
     {{--
         <li class="menu-label">Labels</li>
         <li>
-            <a href="javascript:void();">
+            <a href="#">
                 <div class="parent-icon"><i class="zmdi zmdi-coffee"></i></div>
                 <div class="menu-title">Important</div>
             </a>
