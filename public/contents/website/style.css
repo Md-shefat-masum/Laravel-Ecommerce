@@ -2829,3 +2829,22 @@ h4.comment-title {
   align-items: center;
   padding-right: 10px;
 }
+.menu-container {
+  z-index: 999;
+}
+.product-img .discount_amount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #1e4170;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  line-height: 40px;
+  z-index: 9;
+}
+.product-img .discount_amount span {
+  color: white;
+  font-size: 14px;
+}

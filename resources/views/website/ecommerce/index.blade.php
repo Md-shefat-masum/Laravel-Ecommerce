@@ -4,7 +4,7 @@
             <!-- slider area start -->
             @include('website.ecommerce.home_include.slider')
 
-            <div class="all-product-area mtb-45">
+            <div class="all-product-area mtb-45" id="productList" >
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-3 col-lg-3 col-md-12 col-12">
@@ -28,16 +28,26 @@
                         <!-- product-area start -->
                         <div class="col-xl-9 col-lg-9 col-md-12 col-12">
 
-                            {{-- vue product --}}
-                            {{-- <div id="app">
-                                <product-list
-                                    v-bind:url_get="'{{ route('product_show_product_json','') }}'"
-                                    v-bind:url="'{{ route('product_latest_product_json') }}'">
-                                </product-list>
-                            </div> --}}
-
-                            {{-- bootstrap --}}
-                            <home-section></home-section>
+                            <!-- tab-area start -->
+                            <div class="tab-area box-shadow bg-fff">
+                                <div class="product-title home3-bg text-uppercase">
+                                    <i class="fa fa-check-square-o icon home3-bg2"></i>
+                                    <h3>Recent Product</h3>
+                                    <div class="tab-menu home3-tab-menu floatright hidden-xs">
+                                        <ul class="nav">
+                                            <li><a href="#" class="active">Electronics</a></li>
+                                            <li><a href="#" >Smartphone</a></li>
+                                            <li><a href="#" >Tablets</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tab-content">
+                                    <div style="padding: 0px 15px;">
+                                        <product-single-body></product-single-body>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- tab-area end -->
 
                             <!-- banner-area start -->
                             <div class="banner-area mtb-35">
@@ -123,6 +133,25 @@
                             <!-- mostviewed-area end -->
                         </div>
                         <!-- product-area end -->
+
+                        <div class="modal fade"  id="productViewModal" style="z-index: 99999999999;" tabindex="-1" aria-labelledby="productViewModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="productViewModalLabel">Details</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <product-details></product-details>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

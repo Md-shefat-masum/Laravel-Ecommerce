@@ -4,10 +4,14 @@
             <i class="fa fa-paper-plane-o icon home3-bg2"></i>
             <h3>Latest Product</h3>
         </div>
-        <div class="left left-right-angle">
+        <div class="left left-right-angle" style="padding: 17px;">
             <div class="row">
                 <div class="col-md-3" v-for="(product,index) in products.data" :key="index">
-                    <product-single-body :product="product"></product-single-body>
+                    <product-single-body
+                        :set_selected_product="set_selected_product"
+                        :set_product_details_component_key="set_product_details_component_key"
+                        :product="product">
+                    </product-single-body>
                 </div>
             </div>
         </div>
@@ -16,11 +20,12 @@
 
 <script>
 export default {
+    props: ['set_selected_product','set_product_details_component_key'],
     created: function(){
         $.get('/json/latest-products-json', (res) => {
-            console.log(res);
             this.products = res;
-        })
+        });
+
     },
     data: function(){
         return {
@@ -30,6 +35,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

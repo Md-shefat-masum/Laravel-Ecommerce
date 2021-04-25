@@ -22,7 +22,7 @@ window.Vue = require('vue').default;
 // components
 Vue.component('home-section', require('./components/homeSection.vue').default);
 Vue.component('product-single-body', require('./components/productSingleBody.vue').default);
-
+Vue.component('productDetails', require('./components/productDetails.vue').default);
 
 
 /**
@@ -38,9 +38,14 @@ if (document.getElementById('app')) {
         },
         created: function () {
             $.get('/json/latest-products-json', (res) => {
-                console.log(res);
                 this.products = res.data;
-            })
+            });
+
+            let url_id = (location.href).substring((location.href).lastIndexOf('/') + 1);
+            $.get('/json/show-product-json/'+url_id, (res) => {
+                this.selected_product = res;
+                this.set_product_details_component_key();
+            });
         },
         data: function () {
             return {
@@ -53,12 +58,22 @@ if (document.getElementById('app')) {
                 cart_products: [],
                 cart_total_price: 0,
                 products: [],
+                selected_product: {},
+
+                // component keys
+                product_details_component_key: Math.random(),
             }
         },
         methods: {
             set_modal_product: function (product) {
-                console.log(product);
                 this.modal_view_product = product;
+            },
+            set_selected_product: function(product){
+                this.set_product_details_component_key();
+                this.selected_product = product;
+            },
+            set_product_details_component_key: function(){
+                this.product_details_component_key = Math.random();
             },
             set_cart: function (product) {
                 this.total_cart_product++;
@@ -94,7 +109,16 @@ if (document.getElementById('app')) {
                     return total + (product.price * product.qty);
                 }, 0)
             },
-
+            get_url_id: function(url){
+                var arr = url.match(/navigate\/([^ ]*)/);
+                arr = arr[arr.length - 1].split('/');
+                if(arr.length == 1)
+                    return { project_id: +arr[0] };
+                else if(arr.length == 2)
+                    return { project_id: +arr[0], note_id: +arr[1] };
+                else
+                    return 'invalid';
+            }
         },
     });
 }

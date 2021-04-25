@@ -199,7 +199,6 @@ $(function(){
         let control_class = $(this).siblings('select').data('this_field_will_contorl');
         $.get(url,(res)=>{
             $(this).siblings('select').html(res);
-
             if(control_class){
                 $('.'+control_class).html('');
             }

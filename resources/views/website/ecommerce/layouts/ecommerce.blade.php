@@ -59,7 +59,7 @@
 
         <!-- header start -->
         @include('include.flash')
-        <div class="main-wrapper box-shadow" id="app">
+        <div class="main-wrapper box-shadow">
             <header class="clearfix">
                 <div class="header-top-area bb hidden-xs">
                     <div class="container">
@@ -304,6 +304,7 @@
                 </div>
             </footer>
             <!-- footer-area end -->
+
         </div>
 
         <!-- Placed js at the end of the document so the pages load faster -->

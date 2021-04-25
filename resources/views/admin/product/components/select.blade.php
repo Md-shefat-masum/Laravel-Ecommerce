@@ -60,10 +60,10 @@
                                     @if ($item->type == 'select')
                                         <div class="d-flex select_ontime justify-content-between align-items-center">
                                             <select name="{{ $item->name }}"
-                                                    data-this_field_will_contorl="{{ isset($item->this_field_will_contorl) ? $item->this_field_will_contorl: '' }}"
-                                                    data-this_field_control_route="{{ isset($item->this_field_control_route) ? $item->this_field_control_route : '' }}"
-                                                    class="form-control {{isset($item->class) ?$item->class:''}}">
-                                                <option value="">press reload btn</option>
+                                                data-this_field_will_contorl="{{ isset($item->this_field_will_contorl) ? $item->this_field_will_contorl: '' }}"
+                                                data-this_field_control_route="{{ isset($item->this_field_control_route) ? $item->this_field_control_route : '' }}"
+                                                class="form-control {{isset($item->class) ?$item->class:''}}">
+                                                    <option value="">press reload btn</option>
                                             </select>
                                             @if ($item->option_route)
                                                 <button type="button" class="btn btn-info load_options" data-url="{{ $item->option_route }}"><i class="fa fa-recycle"></i></button>

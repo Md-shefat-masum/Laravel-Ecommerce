@@ -21,12 +21,15 @@
             <div class="row">
                 <div class="col-xl-9 col-lg-9 col-md-12 col-12">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12" id="productList">
                             <div id="app_product_details">
-                                <product-details :product="{{$product}}"></product-details>
+                                <product-details
+                                    :selected_product="{{$product}}">
+                                </product-details>
                             </div>
                         </div>
                     </div>
+
                     {{-- <div class="row">
                         <div class="col-lg-5">
                             <div class="symple-product mb-20">
@@ -177,7 +180,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="simple-product-tab box-shadow">
@@ -297,7 +300,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="product box-shadow mtb-50 bg-fff">
                         <div class="product-title home2-product-title home2-bg-1 text-uppercase">
                             <i class="fa fa-star-o icon bg-4"></i>
@@ -666,96 +669,31 @@
                             <h3>Recent Reviews</h3>
                         </div>
                         <div class="featured-wrapper p-20">
-                            <div class="product-wrapper single-featured">
-                                <div class="product-content floatleft">
-                                    <h3><a href="#">Cras nec nisl ut erat</a></h3>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <small>by name</small>
+                            @php
+                                $collection = App\Models\Product::active()->with(['category', 'sub_category', 'main_category', 'color', 'image', 'publication', 'size', 'unit', 'vendor', 'writer'])
+                                                        ->orderBy('id','DESC')->limit(10)->get();
+                            @endphp
+                            {{-- @foreach ($collection as $item)
+                                <div @click.prevent="set_selected_product(JSON.stringify({{$item}}))" class="product-wrapper single-featured">
+                                    <div class="product-content floatleft">
+                                        <h3><a @click.prevent="set_selected_product({{$item}})" href="#">{{ $item->name }}</a></h3>
+                                        <ul>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                        </ul>
+                                        <small>by name</small>
+                                    </div>
+                                    <div class="product-img floatright">
+                                        <a href="#">
+                                            <img src="/{{ $item->thumb_image }}" alt="">
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="product-img floatright">
-                                    <a href="#">
-                                        <img src="{{ asset('contents/website') }}/img/product/15.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="product-wrapper single-featured">
-                                <div class="product-content floatleft">
-                                    <h3><a href="#">Adipiscing cursus eu</a></h3>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <small>by admin</small>
-                                </div>
-                                <div class="product-img floatright">
-                                    <a href="#">
-                                        <img src="{{ asset('contents/website') }}/img/product/1.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="product-wrapper single-featured">
-                                <div class="product-content floatleft">
-                                    <h3><a href="#">Lorem nec augue</a></h3>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <small>by admin</small>
-                                </div>
-                                <div class="product-img floatright">
-                                    <a href="#">
-                                        <img src="{{ asset('contents/website') }}/img/product/3.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="product-wrapper single-featured">
-                                <div class="product-content floatleft">
-                                    <h3><a href="#">Duis convallis</a></h3>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <small>by admin</small>
-                                </div>
-                                <div class="product-img floatright">
-                                    <a href="#">
-                                        <img src="{{ asset('contents/website') }}/img/product/5.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="product-wrapper single-featured">
-                                <div class="product-content floatleft">
-                                    <h3><a href="#">Purus felis</a></h3>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <small>by admin</small>
-                                </div>
-                                <div class="product-img floatright">
-                                    <a href="#">
-                                        <img src="{{ asset('contents/website') }}/img/product/7.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
+                            @endforeach --}}
+
                         </div>
                     </div>
                     <!-- product-tags-area start -->

@@ -3322,11 +3322,36 @@ h4.comment-title {
     justify-content: end;
     flex-wrap: wrap;
     align-items: center;
+
     .pagination {
         display: flex;
         justify-content: end;
         flex-wrap: wrap;
         align-items: center;
         padding-right: 10px;
+    }
+}
+
+.menu-container {
+    z-index: 999;
+}
+
+.product-img {
+    .discount_amount {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: rgb(30, 65, 112);
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        line-height: 40px;
+        z-index: 9;
+
+        span {
+            color: white;
+            font-size: 14px;
+        }
     }
 }

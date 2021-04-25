@@ -1,5 +1,5 @@
 
-<div class="product-wrapper bl">
+<div class="product-wrapper">
     <div class="product-img">
         <a href="#">
             <img src="http://127.0.0.1:8000/contents/website/img/product/5.jpg" alt="" class="primary">

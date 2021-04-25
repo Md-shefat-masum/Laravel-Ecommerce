@@ -19,14 +19,24 @@ class WebsiteController extends Controller
 
     public function latest_product_json(Request $request)
     {
-        $collection = Product::active()->with(['category', 'sub_category', 'main_category', 'color', 'image', 'publication', 'size', 'unit', 'vendor', 'writer'])
+        $collection = Product::active()
+                                ->with([
+                                        'category',
+                                        'sub_category',
+                                        'main_category',
+                                        'color', 'image',
+                                        'publication',
+                                        'size', 'unit',
+                                        'vendor',
+                                        'writer',
+                                    ])
                                 ->orderBy('id','DESC')->paginate(8);
         return $collection;
     }
 
     public function show_product_json(Product $product)
     {
-        $product['discount_price'] = HelperController::discount_price($product->price,$product->discount);
+        $product['discount_price'] = HelperController::discount_price($product->price,$product->discount,$product->expiration_date);
         $product['image'] = $product->image()->get();
         $product['category'] = $product->category()->get();
         $product['sub_category'] = $product->sub_category()->get();
@@ -37,13 +47,22 @@ class WebsiteController extends Controller
         $product['unit'] = $product->unit()->get();
         $product['vendor'] = $product->vendor()->get();
         $product['writer'] = $product->writer()->get();
+
+        // echo $product->discount_price;
         return $product;
     }
 
-    public function details()
+    public function get_product_related_info_json($product)
     {
-        $product = Product::find(1);
-        $product['discount_price'] = HelperController::discount_price($product->price,$product->discount);
+        $product = Product::where('id',$product)->select('id','price','discount','expiration_date')->first();
+        $product['discount_price'] = HelperController::discount_price($product->price,$product->discount,$product->expiration_date);
+
+        return $product;
+    }
+
+    public function details(Product $product)
+    {
+        $product['discount_price'] = HelperController::discount_price($product->price,$product->discount,$product->expiration_date);
         $product['image'] = $product->image()->get();
         $product['category'] = $product->category()->get();
         $product['sub_category'] = $product->sub_category()->get();
