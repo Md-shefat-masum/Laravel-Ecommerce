@@ -10,7 +10,7 @@
                 <p class="mb-0 "><strong>134</strong> Sales</p>
                 <p class="mb-0  fw-bold">
                     <span class="me-2 text-decoration-line-through"><del>${{ $product->price }}</del></span>
-                    <span class="text-white">${{ Helper::discount_price($product->price,$product->discount) }}</span>
+                    <span class="text-white">${{ $product->discount_price }}</span>
                 </p>
             </div>
             <div class="d-flex align-items-center mt-3 fs-6">

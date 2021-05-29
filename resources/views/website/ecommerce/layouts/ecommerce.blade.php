@@ -43,6 +43,8 @@
         <script src="{{ asset('contents/website') }}/js/vendor/modernizr-2.8.3.min.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+        <script src="https://js.stripe.com/v3/"></script>
         <script>
             function toaster(icon, message){
                 Toast.fire({
@@ -287,18 +289,19 @@
                 <div class="footer-bottom ptb-20">
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-12">
-                                <div class="copyright">
-                                    <span>Copyright &copy; 2021 <a href="#">CIT ECOMMERCE</a> All Rights Reserved.</span>
+                            <div class="col-12">
+                                <div class="copyright" style="display: flex; justify-content: space-between;">
+                                    <span style="display: inline-block">Copyright &copy; 2021 <a href="/">Brandzone</a> All Rights Reserved.</span>
+                                    <span  style="display: inline-block">Developed by <a style="color: red;" href="http://www.hsblco.com">HSBLCO</a></span>
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                            {{-- <div class="col-xl-6 col-lg-6 col-md-6 col-12">
                                 <div class="mayment text-right">
                                     <a href="#">
                                         <img src="{{ asset('contents/website') }}/img/p14.png" alt="" />
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -427,7 +430,9 @@
         <script src="{{ asset('contents/website') }}/js/main.js"></script>
 
 
-        @yield('vuejs')
+        {{-- @yield('vuejs') --}}
+
+        @stack('custom_js')
 
 
 

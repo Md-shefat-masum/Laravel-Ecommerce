@@ -1,11 +1,5 @@
 /*-----------------------------------------------------------------------------------
 
-    Template Name: Your template name
-    Template URI: http://bootexperts.com
-    Description: This is html5 template
-    Author: BootExperts
-    Author URI: http://bootexperts.com
-    Version: 2.0
 
 -----------------------------------------------------------------------------------
 
@@ -1140,9 +1134,9 @@ a#scrollUp,
     display: inline-block;
 }
 
-.product-content ul li:last-child {
-    color: #D3CED2;
-}
+// .product-content ul li:last-child {
+//     color: #D3CED2;
+// }
 
 .product-content span {
     display: block;
@@ -1465,7 +1459,6 @@ a#scrollUp,
 
 /*---------------- blog-area end ---------*/
 /*----------11. newsletter start ---------*/
-.newsletter {}
 
 .newsletter p {
     margin-top: 15px;
@@ -1515,7 +1508,6 @@ a#scrollUp,
     line-height: 45px;
 }
 
-.order-content {}
 
 .order-content h5 {
     color: #ffffff;
@@ -1893,7 +1885,6 @@ a#scrollUp:hover {
 		shop page style here
 ------------------------------*/
 /*------------ categories-area ------------*/
-.menu {}
 
 .menu ul li {
     display: inline-block;
@@ -2429,7 +2420,6 @@ h4.comment-title {
 /*-------------------------------------
 			protfolio style here
 ----------------------------------------- */
-.protfolio-taitle h1 {}
 
 .protfolio-menu li {
     border: 1px solid transparent;
@@ -2575,7 +2565,6 @@ h4.comment-title {
     margin-top: 20px;
 }
 
-.project-meta ul li .meta-info {}
 
 .project-meta ul li .meta-info p {
     font-weight: 700;
@@ -2907,8 +2896,6 @@ h4.comment-title {
     border-radius: 5px;
 }
 
-.account-form form {}
-
 .account-form form b {
     margin-bottom: 5px;
     display: block;
@@ -3053,13 +3040,13 @@ h4.comment-title {
     margin-bottom: 10px;
 }
 
-.review-form.form-style button {
-    background: #ebe9eb;
-    border: 1px solid #ebebeb;
-    font-weight: 600;
-    height: 35px;
-    width: 100%;
-}
+// .review-form.form-style button {
+//     background: #ebe9eb;
+//     border: 1px solid #ebebeb;
+//     font-weight: 600;
+//     height: 35px;
+//     width: 100%;
+// }
 
 /*-------------------------------------
 		Variable Product style here
@@ -3353,5 +3340,153 @@ h4.comment-title {
             color: white;
             font-size: 14px;
         }
+    }
+}
+
+.menu-container ul li:hover ul.megamenu-2.home3-megamenu-2 {
+    width: 250px;
+    z-index: 99999;
+
+    li {
+        width: 100%;
+        position: relative;
+
+        ul {
+            position: absolute;
+            left: 105%;
+            /* border: 1px solid red; */
+            top: 0;
+            width: 250px;
+            padding: 11px;
+            background: white;
+            box-shadow: 1px 1px 9px #00000038;
+            opacity: 0;
+            visibility: hidden;
+            transition: all linear .3s;
+        }
+
+        &:hover {
+            ul {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+}
+
+.menu-container ul li a {
+    font-weight: 500;
+}
+
+.nivo-directionNav a {
+    z-index: 99;
+}
+
+.tab-menu .pagination {
+    li {
+        margin: 0;
+        margin-right: 5px;
+    }
+}
+
+.c_category_tab {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .tab-menu {
+        display: flex;
+        justify-content: flex-end;
+        width: unset;
+        align-items: center;
+
+        .nav {
+            align-items: center;
+
+            li {
+                a {
+                    display: inline-block;
+                    color: white;
+                    transition: all linear .3s;
+
+                    &.active {
+                        color: black !important;
+                        background: white;
+                        padding: 0px 4px;
+                    }
+
+                    &:hover {
+                        color: black;
+                        background: white;
+                        padding: 0px 4px;
+                    }
+                }
+            }
+        }
+
+        ul {
+            li {
+                margin: 0;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.product-content h3 a {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 99%;
+    line-height: 22px;
+}
+
+.dashboard_profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    .img {
+        border: 1px solid;
+        height: 131px;
+        width: 130px;
+        border-radius: 50%;
+        padding: 5px;
+        margin: 5px 0px;
+        margin-top: 20px;
+        text-align: center;
+
+        img {
+            vertical-align: middle;
+            height: 100%;
+        }
+    }
+
+    h2 {
+        font-size: 21px;
+        text-transform: capitalize;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+}
+
+.custom_scroll {
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 3px rgb(0 0 0 / 24%);
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #4775b5;
+        /* outline: 1px solid slategrey; */
+        border-radius: 6px;
     }
 }

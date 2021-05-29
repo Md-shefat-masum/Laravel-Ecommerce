@@ -168,9 +168,7 @@
                             </tbody></table>
                         </div>
                         <div class="simple-product-form contuct-form mb-30">
-                            <form action="#">
-                                <button>Proceed to Checkout</button>
-                            </form>
+                            <a class="btn btn-success btn-sm" href="/checkout">Proceed to Checkout</a>
                         </div>
                     </div>
                 </div>

@@ -163,9 +163,20 @@ export default {
             price: '',
         }
     },
+    watch: {
+        get_selected_cart: {
+            handler(val){
+                this.qty = this.get_selected_cart.qty;
+                this.color = this.get_selected_cart.color;
+                this.size = this.get_selected_cart.size;
+            },
+            deep: true
+        }
+    },
     computed: {
         ...mapGetters([
-            'get_product_details'
+            'get_product_details',
+            'get_selected_cart',
         ]),
         get_product_price: function(){
             if(this.product.discount_price > 0){
@@ -177,4 +188,12 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .simple-product-form form input {
+        margin-right: 10px;
+        padding-left: 5px;
+        width: 78px;
+    }
+</style>
 

@@ -53,7 +53,7 @@ class LoginController extends Controller
             Auth::logout();
             return redirect()->back()->with('error','your accont is blocked');;
         }
-        if(Auth::user()->status == 0){
+        if(Auth::check() && Auth::user()->status == 0){
             Auth::logout();
             return redirect()->back()->with('error','your accont is blocked');;
         }
