@@ -4,12 +4,14 @@ import axios from 'axios';
 const state = {
     product_list: [],
     product_details: {},
+    test_variable: 'this is test',
 }
 
 // get state
 const getters = {
     get_product_list: state => state.product_list,
     get_product_details: state => state.product_details,
+    get_test_variable: state => state.test_variable,
 }
 
 // actions
