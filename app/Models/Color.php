@@ -9,4 +9,9 @@ class Color extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function related_products()
+    {
+        return $this->belongsToMany('App\Models\Product');
+    }
 }

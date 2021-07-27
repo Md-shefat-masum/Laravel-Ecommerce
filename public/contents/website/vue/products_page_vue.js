@@ -15,6 +15,7 @@ if (document.getElementById('category_product')) {
                 page: 'category',
                 products: {},
                 categories: [],
+                data_load_url: '/json/latest-products-json?page=',
             }
         },
         methods: {
@@ -25,22 +26,29 @@ if (document.getElementById('category_product')) {
                 'set_product_details'
             ]),
             get_product: function(page=1){
-                axios.get('/json/latest-products-json?page='+page)
+                axios.get(this.data_load_url+page)
                 .then((res)=>{
-                    this.products = res.data;
+                    console.log(res.data);
+                    if(res.data.products){
+                        this.products = res.data.products;
+                    }else{
+                        this.products = res.data;
+                    }
                     $("html, body").animate({ scrollTop: 250 }, "slow");
                 })
             },
             get_categories: function(){
                 axios.get('/json/get-all-category')
-                    .then(res=>this.categories = res.data);
-
-                setTimeout(() => {
-                    $('.toggle_category').on('click',function(){
-                        // console.log('hi');
-                        $(this).siblings('ul').toggleClass('toggle_display');
+                    .then(res=>{
+                        this.categories = res.data;
+                        setTimeout(() => {
+                            $('.toggle_category').on('click',function(){
+                                // console.log('hi');
+                                $(this).siblings('ul').toggleClass('toggle_display')
+                                // console.log($(this).parent('li').children('ul').toggleClass('toggle_display'));
+                            });
+                        }, 2000);
                     });
-                }, 2000);
             },
             get_category_wise_product: function(page=1){
                 axios.get('/json/latest-products-json?page='+page)
@@ -79,8 +87,17 @@ if (document.getElementById('category_product')) {
             },
             load_product: function(url){
                 window.history.pushState("", "", url);
-                this.fetch_category_product_list_paginate(1);
+                // this.fetch_category_product_list_paginate(1);
                 // console.log(url);
+                this.data_load_url = window.location.href+"/all-product-json?page=";
+
+                axios.get(window.location.href+'/all-product-json?page='+1)
+                    .then((res)=>{
+                        this.products = res.data.products;
+                        // this.commit('set_related_colors',res.data.sizes);
+                        // this.commit('set_related_colors',res.data.colors);
+                        console.log(res.data);
+                    })
             },
         },
         computed: {

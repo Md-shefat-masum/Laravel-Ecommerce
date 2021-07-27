@@ -228,7 +228,7 @@
                 margin-bottom: 30px;
             }
             .toggle_display{
-                display: block;
+                display: block!important;
             }
         </style>
     @endpush

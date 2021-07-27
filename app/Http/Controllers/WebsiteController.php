@@ -38,6 +38,8 @@ class WebsiteController extends Controller
         return view('website.ecommerce.products');
     }
 
+    public $main_category_id, $category_id;
+
     public function main_category_products_json(Request $request, $main_category)
     {
         $main_category = MainCategory::where('slug', $main_category)->first();
@@ -111,7 +113,7 @@ class WebsiteController extends Controller
                     'size',
                     'unit',
                     'writer',
-                ])->orderBy('id', 'DESC')->paginate(16);
+                ])->orderBy('id', 'DESC')->paginate(8);
 
                 $sizes = Size::where('status',1)->select(['name','id'])->get();
                 foreach ($sizes as $key => $item) {
@@ -223,7 +225,7 @@ class WebsiteController extends Controller
                     'size',
                     'unit',
                     'writer',
-                ])->orderBy('id', 'DESC')->paginate(16);
+                ])->orderBy('id', 'DESC')->paginate(6);
 
                 $sizes = Size::where('status',1)->select(['name','id'])->get();
                 foreach ($sizes as $key => $item) {
@@ -387,6 +389,7 @@ class WebsiteController extends Controller
         $category = MainCategory::where('status', 1)->with('related_categories')->withCount('related_products')->get();
         return $category;
     }
+
 
     public function details(Product $product)
     {

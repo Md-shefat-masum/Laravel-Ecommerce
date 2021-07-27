@@ -58,8 +58,11 @@ Route::group([
     Route::get('/get-min-max-price', 'WebsiteController@get_min_max_price_json')->name('product_get_min_max_price_json');
     Route::get('/get-all-category', 'WebsiteController@get_all_category_json')->name('product_get_all_category_json');
 
+    // Route::get('/products/category/{main_category}/all-product-json', 'WebsiteController@main_category_products_json')->name('website_main_category_products_json');
+    // Route::get('/category-products-json/{main_category_id}/{category_id}', 'WebsiteController@category_product_json')->name('product_category_product_json');
+
+
     Route::get('/latest-products-json', 'WebsiteController@latest_product_json')->name('product_latest_product_json');
-    Route::get('/category-wise-products-json/{main_category_slug}/{category_slug}', 'WebsiteController@category_wise_product_json')->name('product_category_wise_product_json');
     Route::get('/show-product-json/{product}', 'WebsiteController@show_product_json')->name('product_show_product_json');
     Route::get('/get-product-related-info-json/{product}', 'WebsiteController@get_product_related_info_json')->name('product_get_product_related_info_json');
 
