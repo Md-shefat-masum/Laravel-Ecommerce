@@ -366,6 +366,28 @@ class WebsiteController extends Controller
         return $product;
     }
 
+    public function get_min_max_price_json()
+    {
+        $max_price = Product::orderBy('price', 'DESC')->first();
+        $min_price = Product::orderBy('price', 'ASC')->first();
+
+        return response()->json([
+            'max_price' => $max_price->price,
+            'min_price' => $min_price->price,
+        ]);
+    }
+
+    public function category_wise_product_json($main_category_slug,$category_slug)
+    {
+        dd($main_category_slug, $category_slug);
+    }
+
+    public function get_all_category_json()
+    {
+        $category = MainCategory::where('status', 1)->with('related_categories')->withCount('related_products')->get();
+        return $category;
+    }
+
     public function details(Product $product)
     {
         $product['discount_price'] = HelperController::discount_price($product->price, $product->discount, $product->expiration_date);

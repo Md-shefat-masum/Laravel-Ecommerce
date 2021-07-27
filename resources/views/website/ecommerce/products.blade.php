@@ -17,63 +17,11 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-3 col-md-12 col-12">
                     <!-- categories-area start -->
-                    <div class="categories-area box-shadow bg-fff">
-                        <div class="product-title home2-bg-1 text-uppercase home2-product-title">
-                            <i class="fa fa-bookmark icon bg-4"></i>
-                            <h3>categories</h3>
-                            <h3>@{{get_test_variable}}</h3>
-                        </div>
-                        <div class="shop-categories-menu p-20">
-                            <ul>
-                                <li><a href="#">Accessories</a><span> (7)</span></li>
-                                <li>
-                                    <a href="#">Clothing</a><span> (21)</span><span class="opener-1 fa fa-plus pull-right"></span>
-                                    <ul class="toggle-1" style="display: none;">
-                                        <li><a href="#">Hoodies</a><span> (20)</span></li>
-                                        <li><a href="#">T-shirts</a><span> (3)</span></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Men's</a><span> (16)</span><span class="opener-2 fa fa-plus pull-right"></span>
-                                    <ul class="toggle-2" style="display: none;">
-                                        <li><a href="#">Hats</a><span> (9)</span></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Music</a><span> (11)</span><span class="opener-3 fa fa-plus pull-right"></span>
-                                    <ul class="toggle-3" style="display: none;">
-                                        <li><a href="#">Albums</a><span> (1)</span></li>
-                                        <li><a href="#">Singles</a><span> (3)</span></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Posters</a><span> (7)</span></li>
-                                <li>
-                                    <a href="#">Women's</a><span> (14)</span><span class="opener-4 fa fa-plus pull-right"></span>
-                                    <ul class="toggle-4">
-                                        <li><a href="#">Hats</a><span> (10)</span></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    @include('website.ecommerce.product.poduct_page_categories')
+
                     <!-- filter-by-price-area start -->
-                    <div class="filter-by-price-area mtb-30 bg-fff box-shadow">
-                        <div class="product-title home2-bg-1 text-uppercase home2-product-title">
-                            <i class="fa fa-bookmark icon bg-4"></i>
-                            <h3>Filter by price</h3>
-                        </div>
-                        <div class="filter-by-price p-20-15">
-                            <p>price: <input type="text" id="amount" /></p>
-                            <div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0.4%; width: 99.6%;"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0.4%;"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>
-                            </div>
-                            <div class="filter">
-                                <button>filter</button>
-                            </div>
-                        </div>
-                    </div>
+                    @include('website.ecommerce.product.product_price_range')
+
                     <!-- size-area start -->
                     <div class="size-area bg-fff box-shadow">
                         <div class="product-title home2-bg-1 text-uppercase home2-product-title">
@@ -166,6 +114,7 @@
                 <!-- product-vew area start -->
                 <div class="col-xl-9 col-lg-9 col-md-12 col-12">
                     <div class="tab-area">
+
                         <!-- <div class="tab-menu-area bg-fff mb-30 box-shadow">
                             <div class="row">
                                 <div class="col-xl-4 col-md-4 col-md-4 col-12">
@@ -199,25 +148,26 @@
                                 </div>
                             </div>
                         </div> -->
+
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-3" v-for="product in products.data" :key="product.id">
                                 <div class="product-wrapper">
                                     <div class="product-img">
                                         <a href="#">
-                                            <img src="/contents/website/img/product/5.jpg" alt="" class="primary">
-                                            <img src="/contents/website/img/product/6.jpg" alt="" class="secondary">
+                                            <img :src="`/${product.thumb_image}`" alt="" class="primary">
+                                            <img :src="`/${product.image[1].name}`" alt="" class="secondary">
                                         </a>
                                         <div class="product-icon c-fff home3-hover-bg">
                                             <ul>
                                                 <li><a href="#" data-toggle="tooltip" title="" data-original-title="Add to cart"><i class="fa fa-shopping-cart"></i></a></li>
                                                 <li><a href="#" data-toggle="tooltip" title="" data-original-title="Wishlist"><i class="fa fa-heart-o"></i></a></li>
                                                 <li><a href="#" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-comments"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" title="" data-original-title="Accumsan eli"><i class="fa fa-search"></i></a></li>
+                                                <li><a href="#" data-toggle="tooltip" @click.prevent="showModal(product)"  title="" data-original-title="view product details"><i class="fa fa-search"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="product-content home3-hover">
-                                        <h3><a href="#">Adipiscing cursus eu</a></h3>
+                                        <h3><a :href="'/product-details/'+product.id">@{{product.name}}</a></h3>
                                         <ul>
                                             <li><i class="fa fa-star"></i></li>
                                             <li><i class="fa fa-star"></i></li>
@@ -225,34 +175,61 @@
                                             <li><i class="fa fa-star"></i></li>
                                             <li><i class="fa fa-star"></i></li>
                                         </ul>
-                                        <span>&amp;300.00</span>
+                                        <div class="d-flex justify-content-between">
+                                            <span v-if="product.discount_price > 0">
+                                                <del>$ @{{product.price}}</del>
+                                            </span>
+                                            <span v-else>@{{product.price}}</span>
+
+                                            <span v-if="product.discount_price>0" >$ @{{product.discount_price}}</span>
+                                        </div>
                                     </div>
                                 </div>
-                                </div>
+                            </div>
                         </div>
+
                         <!-- woocommerce-pagination-area -->
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                                <div class="woocommerce-pagination-area bg-fff box-shadow ptb-10 mb-30">
-                                    <div class="woocommerce-pagination text-center hover-bg">
-                                        <ul>
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li>
-                                                <a href="#"><i class="fa fa-chevron-right"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <pagination :data="products" @pagination-change-page="get_product"></pagination>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade"  id="productViewModal" style="z-index: 99999999999;" tabindex="-1" aria-labelledby="productViewModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="productViewModalLabel">Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <product-details></product-details>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
     @push('custom_js')
         <script src="{{ asset('contents/website') }}/vue/products_page_vue.js"></script>
+        <style>
+            .product-wrapper {
+                background: white;
+                margin-bottom: 30px;
+            }
+            .toggle_display{
+                display: block;
+            }
+        </style>
     @endpush
 @endsection

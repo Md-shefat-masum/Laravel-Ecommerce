@@ -20,6 +20,8 @@ Vue.component('checkOut', require('./components/productComponents/checkOut.vue')
 Vue.component('invoice', require('./components/productComponents/invoice.vue').default);
 Vue.component('categoryProduct', require('./components/productComponents/categoryProduct.vue').default);
 
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 window.mapGetters = mapGetters;
 window.mapActions = mapActions;

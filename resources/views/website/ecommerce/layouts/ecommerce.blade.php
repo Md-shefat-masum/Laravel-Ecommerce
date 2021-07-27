@@ -42,15 +42,15 @@
         <!-- Modernizr JS -->
         <script src="{{ asset('contents/website') }}/js/vendor/modernizr-2.8.3.min.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-        <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
-        <script src="https://js.stripe.com/v3/"></script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> --}}
+        {{-- <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script> --}}
+        {{-- <script src="https://js.stripe.com/v3/"></script> --}}
         <script>
             function toaster(icon, message){
-                Toast.fire({
-                    icon: icon,
-                    title: message,
-                })
+                // Toast.fire({
+                //     icon: icon,
+                //     title: message,
+                // })
             }
         </script>
     </head>
@@ -60,7 +60,7 @@
         <![endif]-->
 
         <!-- header start -->
-        @include('include.flash')
+        {{-- @include('include.flash') --}}
         <div class="main-wrapper box-shadow">
             <header class="clearfix">
                 <div class="header-top-area bb hidden-xs">

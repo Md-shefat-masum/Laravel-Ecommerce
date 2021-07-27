@@ -54,6 +54,7 @@
             }
         }
     })
+
     // new-product-active ///
     $('.new-product-active').owlCarousel({
         smartSpeed: 1000,
@@ -75,6 +76,7 @@
             }
         }
     })
+
     // tab-active ///
     $('.tab-active').owlCarousel({
         smartSpeed: 1000,
@@ -96,6 +98,7 @@
             }
         }
     })
+
     // latest-deals-active ///
     // $('.latest-deals-active').owlCarousel({
     //     smartSpeed: 1000,
@@ -244,14 +247,6 @@
     })
 
 
-
-
-
-
-
-
-
-
     // single-product-active///
     $('.single-product-active').owlCarousel({
         smartSpeed: 1000,
@@ -389,27 +384,6 @@
             }
         }
     })
-    // pricing slider//
-    let min_price=0;
-    let max_price = 0;
-    $.get('/json/get-min-max-price',function(res){
-        min_price = res.min_price;
-        max_price = res.max_price;
-
-        $("#slider-range").slider({
-            range: true,
-            min: min_price,
-            max: max_price,
-            values: [2, 500],
-            slide: function (event, ui) {
-                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-            }
-        });
-
-        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-            " - $" + $("#slider-range").slider("values", 1));
-    })
-
 
 
     // login form click////
