@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image as interImage;
 
 class FileManagerController extends Controller
-{
+{ 
     public function store_file(Request $request)
-    {
+    {       $image =Image::get();
         if ($request->hasFile('fm_file')) {
             // $path = Storage::put('uploads/file_manager',$request->file('fm_file'));
             $file = $request->file('fm_file');
