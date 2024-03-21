@@ -14,28 +14,18 @@
                     <div class="card">
                         <div class="card-body">
                             <table class="table table-bordered table-hover table-striped">
-                                <tr>
-                                    <td style="width: 40%">title</td>
+                                 <tr>
+                                    <td style="width: 40%">Name:</td>
                                     <td>:</td>
                                     <td>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci dignissimos, pariatur cum rem laborum nesciunt itaque labore excepturi accusantium?
-                                         Odio perspiciatis quos fugiat eos, reprehenderit atque aut voluptas eum ipsum.
-                                    </td>
+                                    {{$brand->name}}   </td>
                                 </tr>
+                               
                                 <tr>
-                                    <td style="width: 40%">title</td>
+                                    <td style="width: 40%">Logo</td>
                                     <td>:</td>
                                     <td>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci dignissimos, pariatur cum rem laborum nesciunt itaque labore excepturi accusantium?
-                                         Odio perspiciatis quos fugiat eos, reprehenderit atque aut voluptas eum ipsum.
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 40%">title</td>
-                                    <td>:</td>
-                                    <td>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci dignissimos, pariatur cum rem laborum nesciunt itaque labore excepturi accusantium?
-                                         Odio perspiciatis quos fugiat eos, reprehenderit atque aut voluptas eum ipsum.
+                                     <img src="{{$brand->logo}}">
                                     </td>
                                 </tr>
                             </table>

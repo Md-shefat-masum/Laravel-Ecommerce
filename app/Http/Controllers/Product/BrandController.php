@@ -21,13 +21,16 @@ class BrandController extends Controller
      */
     public function index()
     {
-
-
         $main_categories = MainCategory::where('status',1)->get();
-        $categories =
+        $prod_brands = Brand::join('products','brands.id','=','products.brand_id')
+                       ->get(['products.id','brands.name']);
+         $array_brands=[];
+         foreach($prod_brands as $item){
+            $array_brands[]=$item->name;
+         }
 
         $collection = Brand::where('status',1)->latest()->paginate(10);
-        return view('admin.product.brand.index',compact('collection'));
+        return view('admin.product.brand.index',compact('collection','array_brands','prod_brands'));
     }
 
     public function get($id)
@@ -87,6 +90,9 @@ class BrandController extends Controller
     public function show($id)
     {
         //
+        $brand = Brand::find($id);
+        return view('admin.product.brand.view',['brand'=>$brand]);
+
     }
 
     /**

@@ -26,7 +26,7 @@
                                     <label for="input-21" class="col-sm-2 col-form-label">Icon</label>
                                     <div class="col-sm-10">
                                         <input type="file" name="icon" class="form-control" id="input-21"/>
-                                        <img src="/{{ $main_category->logo }}" style="height: 40px;" alt="">
+                                        <img src="/{{ $main_category->icon }}" style="height: 40px;" alt="">
                                         <span class="text-danger icon"></span>
                                     </div>
                                 </div>

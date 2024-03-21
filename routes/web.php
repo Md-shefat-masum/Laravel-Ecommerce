@@ -109,13 +109,14 @@ Route::group([
 });
 
 Route::group([
-    'prefix' => 'admin/product',
+    'prefix' => 'admin/products',
     'middleware' => ['auth'],
     'namespace' => 'Product'
 ], function () {
 
     // basic_page
     Route::resource('product', 'ProductController');
+    Route::get('/list','ProductController@index')->name('product.index');
 
     // Route::get('/brand','BrandController@index')->name('brand.index');
     // Route::get('/brand/get/{id}','BrandController@get')->name('brand.get');

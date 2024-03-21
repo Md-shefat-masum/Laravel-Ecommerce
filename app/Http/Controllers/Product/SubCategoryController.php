@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\MainCategory;
 use App\Models\SubCategory;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -21,6 +22,12 @@ class SubCategoryController extends Controller
     public function index()
     {
         $collection = SubCategory::where('status',1)->latest()->paginate(10);
+        $products = Product::join('category_product','products.id','=','category_product.product_id')
+                    ->join('sub_categories','sub_categories.category_id','=','category_product.category_id')
+                    ->get(['products.id']);
+         echo"<pre>";
+         print_r($products->count());
+         die;
         return view('admin.product.sub_category.index',compact('collection'));
     }
 

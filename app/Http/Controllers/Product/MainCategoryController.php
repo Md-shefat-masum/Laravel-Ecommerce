@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\MainCategory;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -19,8 +20,15 @@ class MainCategoryController extends Controller
      */
     public function index()
     {
-        $collection = MainCategory::where('status',1)->latest()->paginate(10);
-        return view('admin.product.main_category.index',compact('collection'));
+        $collection = MainCategory::where('status',1)->latest()->get();
+        $products = Product::join('main_category_product','products.id','=','main_category_product.product_id')
+                    ->join('main_categories','main_categories.id','=','main_category_product.main_category_id')
+                    ->get(['products.id','main_categories.name']);
+        $prod_name=[];
+        foreach($products as $prod){
+            $prod_name[]=$prod->name;
+        }
+        return view('admin.product.main_category.index',compact('collection','prod_name','products'));
     }
 
     public function get_main_category_json()
@@ -82,6 +90,8 @@ class MainCategoryController extends Controller
     public function show($id)
     {
         //
+        $mainCategory=MainCategory::find($id);
+        return view('admin.product.main_category.view',compact('mainCategory'));
     }
 
     /**
@@ -111,7 +121,7 @@ class MainCategoryController extends Controller
         $main_category->update($request->except('icon'));
 
         if($request->hasFile('icon')){
-            $main_category->logo = Storage::put('uploads/maincategory',$request->file('icon'));
+            $main_category->icon = Storage::put('uploads/maincategory',$request->file('icon'));
             $main_category->save();
         }
 

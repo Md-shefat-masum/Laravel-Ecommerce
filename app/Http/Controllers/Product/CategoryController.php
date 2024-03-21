@@ -22,7 +22,9 @@ class CategoryController extends Controller
     public function index()
     {
         $collection = Category::where('status',1)->latest()->paginate(10);
-        return view('admin.product.category.index',compact('collection'));
+        $prodIDs = Category::join('category_product','categories.id','=','category_product.category_id')->get(['category_product.product_id','categories.name']);
+        
+        return view('admin.product.category.index',compact('collection','prodIDs'));
     }
 
     public function get_category_json()

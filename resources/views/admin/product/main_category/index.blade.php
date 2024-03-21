@@ -28,10 +28,26 @@
                                             <tr>
                                                 <td scope="row">{{ $key+1 }}</td>
                                                 <td scope="row">{{ $item->name }}</td>
-                                                <td scope="row"></td>
+                                                <td scope="row">
+                                                  @if(in_array($item->name,$prod_name))
+                                                  @php
+                                                  $no_products=[];
+                                                  @endphp
+                                                    @foreach($products as $prod)
+                                                    @if($prod->name==$item->name)
+                                                   @php
+                                                   $no_products[]=$prod->id;
+                                                   @endphp
+                                                    @endif
+                                                    @endforeach
+                                                  {{count($no_products)}}
+                                                   @else 0
+                                                   @endif
+                                                   
+                                                </td>
                                                 <td scope="row">
                                                     <div class="text-right">
-                                                        <a type="button" href="" class="btn btn-light waves-effect waves-light m-1">
+                                                        <a type="button" href="{{ route('main_category.show',$item->id) }}" class="btn btn-light waves-effect waves-light m-1">
                                                             <i class="fa fa-eye"></i> <span>view</span>
                                                         </a>
                                                         <a type="button" href="{{ route('main_category.edit',$item->id) }}" class="btn btn-warning waves-effect waves-light m-1">

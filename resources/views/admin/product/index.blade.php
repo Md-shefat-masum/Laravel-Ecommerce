@@ -12,15 +12,15 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row align-items-center">
-                                        <div class="col-lg-3 col-xl-2">
-                                            <a href="ecommerce-add-new-products.html" class="btn btn-light mb-3 mb-lg-0"><i class="bx bxs-plus-square"></i>New Product</a>
-                                        </div>
-                                        <div class="col-lg-9 col-xl-10">
+                                        <!-- <div class="col-lg-3 col-xl-2">
+                                             <a href="ecommerce-add-new-products.html" class="btn btn-light mb-3 mb-lg-0"><i class="bx bxs-plus-square"></i>New Product</a>
+                                        </div> -->
+                                        <div class="col-lg-12 col-xl-12">
                                             <form class="float-lg-end">
                                                 <div class="row row-cols-lg-auto g-2">
                                                     <div class="col-12 d-flex flex-wrap justify-content-end align-items-center">
                                                         <div class="position-relative mx-3">
-                                                            <input type="text" class="form-control ps-5" placeholder="Search Product..." /> <span class="position-absolute top-50 product-show translate-middle-y"><i class="bx bx-search"></i></span>
+                                                            <input type="search" name="search" class="form-control ps-5" placeholder="Search Product..." /> <span class="position-absolute top-50 product-show translate-middle-y"><i class="bx bx-search"></i></span>
                                                         </div>
                                                         <div class="btn-group mx-3" role="group" aria-label="Button group with nested dropdown">
                                                             <button type="button" class="btn btn-light">Sort By</button>
