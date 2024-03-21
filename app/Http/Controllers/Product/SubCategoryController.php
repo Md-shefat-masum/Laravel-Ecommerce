@@ -25,9 +25,9 @@ class SubCategoryController extends Controller
         $products = Product::join('category_product','products.id','=','category_product.product_id')
                     ->join('sub_categories','sub_categories.category_id','=','category_product.category_id')
                     ->get(['products.id']);
-         echo"<pre>";
-         print_r($products->count());
-         die;
+        //  echo"<pre>";
+        //  print_r($products->count());
+        //  die;
         return view('admin.product.sub_category.index',compact('collection'));
     }
 
