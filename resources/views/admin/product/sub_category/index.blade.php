@@ -32,7 +32,20 @@
                                                 <td scope="row">{{ $item->name }}</td>
                                                 <td scope="row">{{ $item->category_info ? $item->category_info->name : '' }}</td>
                                                 <td scope="row">{{ $item->main_category_info ? $item->main_category_info->name : '' }}</td>
-                                                <td scope="row"></td>
+                                                <td scope="row">
+                                                @if($item->main_category_id==$item->main_category_info->id) 
+                                                @php
+                                                $no_products=[];
+                                                @endphp
+                                                @foreach($products as $prod)
+                                                @if($item->name==$prod->name)
+                                                    @php $no_products[]=$prod->id;
+                                                    @endphp
+                                                @endif
+                                                @endforeach
+                                                {{count($no_products)}}
+                                                @endif
+                                                </td>
                                                 <td scope="row">
                                                     <div class="text-right">
                                                         <a type="button" href="" class="btn btn-light waves-effect waves-light m-1">
