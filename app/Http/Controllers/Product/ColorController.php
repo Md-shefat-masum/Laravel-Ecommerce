@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Color;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -18,7 +19,11 @@ class ColorController extends Controller
     public function index()
     {
         $collection = Color::where('status',1)->latest()->paginate(10);
-        return view('admin.product.color.index',compact('collection'));
+        $products_list = Product::join('color_product','products.id','=','color_product.product_id')
+                         ->join('colors','colors.id','=','color_product.color_id')
+                         ->get(['products.id','colors.name']);
+        
+        return view('admin.product.color.index',compact('collection','products_list'));
     }
 
     /**

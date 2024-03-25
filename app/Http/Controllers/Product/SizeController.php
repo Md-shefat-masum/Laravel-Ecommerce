@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Size;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -18,7 +19,10 @@ class SizeController extends Controller
     public function index()
     {
         $collection = Size::where('status',1)->latest()->paginate(10);
-        return view('admin.product.size.index',compact('collection'));
+        $products_list = Product::join('product_size','products.id','=','product_size.product_id')
+                        ->join('sizes','sizes.id','=','product_size.size_id')
+                        ->get(['products.id','sizes.name']);
+        return view('admin.product.size.index',compact('collection','products_list'));
     }
 
     /**

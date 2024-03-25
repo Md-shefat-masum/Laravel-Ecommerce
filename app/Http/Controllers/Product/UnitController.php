@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Unit;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -18,7 +19,10 @@ class UnitController extends Controller
     public function index()
     {
         $collection = Unit::where('status',1)->latest()->paginate(10);
-        return view('admin.product.unit.index',compact('collection'));
+        $products_list = Product::join('product_unit','products.id','=','product_unit.product_id')
+                         ->join('units','units.id','=','product_unit.unit_id')
+                         ->get(['products.id','units.name']);
+        return view('admin.product.unit.index',compact('collection','products_list'));
     }
 
     /**

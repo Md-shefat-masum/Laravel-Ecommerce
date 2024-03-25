@@ -28,12 +28,23 @@
                                             <tr>
                                                 <td scope="row">{{ $key+1 }}</td>
                                                 <td scope="row">{{ $item->name }}</td>
-                                                <td scope="row"></td>
+                                                <td scope="row">
+                                                @php
+                                                $no_products=[];
+                                                @endphp
+                                                @foreach($products_list as $prod)
+                                                @if($item->name==$prod->name)
+                                                    @php $no_products[]=$prod->id;
+                                                    @endphp
+                                                @endif
+                                                @endforeach
+                                                {{count($no_products)}}
+                                                </td>
                                                 <td scope="row">
                                                     <div class="text-right">
-                                                        <a type="button" href="" class="btn btn-light waves-effect waves-light m-1">
+                                                        <!-- <a type="button" href="" class="btn btn-light waves-effect waves-light m-1">
                                                             <i class="fa fa-eye"></i> <span>view</span>
-                                                        </a>
+                                                        </a> -->
                                                         <a type="button" href="{{ route('unit.edit',$item->id) }}" class="btn btn-warning waves-effect waves-light m-1">
                                                             <i class="fa fa-pencil"></i> <span>edit</span>
                                                         </a>
