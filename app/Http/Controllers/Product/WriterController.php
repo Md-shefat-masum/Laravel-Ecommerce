@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Writer;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +20,10 @@ class WriterController extends Controller
     public function index()
     {
         $collection = Writer::where('status',1)->latest()->paginate(10);
-        return view('admin.product.writer.index',compact('collection'));
+        $products_list = Product::join('product_writer','products.id','=','product_writer.product_id')
+                         ->join('writers','writers.id','=','product_writer.writer_id')
+                         ->get(['products.id','writers.name']);
+        return view('admin.product.writer.index',compact('collection','products_list'));
     }
 
     /**

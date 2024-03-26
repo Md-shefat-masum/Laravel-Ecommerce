@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Vendor;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +20,10 @@ class VendorController extends Controller
     public function index()
     {
         $collection = Vendor::where('status',1)->latest()->paginate(10);
-        return view('admin.product.vendor.index',compact('collection'));
+        $products_list = Product::join('product_vendor','products.id','=','product_vendor.product_id')
+                         ->join('vendors','vendors.id','=','product_vendor.vendor_id')
+                         ->get(['products.id','vendors.name']);
+        return view('admin.product.vendor.index',compact('collection','products_list'));
     }
 
     /**
