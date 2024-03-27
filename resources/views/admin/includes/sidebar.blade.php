@@ -28,7 +28,7 @@
         </li>
     @endif
 
-
+    @if (Auth::user()->role_id == 2 || Auth::user()->role_id == 4 )
     <li>
         <a class="has-arrow" href="#">
             <div class="parent-icon"><i class="fa fa-shopping-cart"></i></div>
@@ -38,9 +38,11 @@
             <li>
                 <a href="{{ route('product.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> All Product</a>
             </li>
+            @if (Auth::user()->role_id == 2)
             <li>
                 <a href="{{ route('product.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Add Product</a>
             </li>
+            @endif
             <li>
                 <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> Brands</a>
             </li>
@@ -78,7 +80,7 @@
 
         </ul>
     </li>
-
+    @if (Auth::user()->role_id != 4)
     <li>
         <a class="has-arrow" href="#">
             <div class="parent-icon"><i class="zmdi zmdi-view-dashboard"></i></div>
@@ -96,7 +98,8 @@
             </li>
         </ul>
     </li>
-
+    @endif
+   @endif
 
     <li class="menu-label">Extra</li>
     <li>

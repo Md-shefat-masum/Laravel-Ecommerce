@@ -10,7 +10,9 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <h5 class="card-title">Vendors</h5>
+                            @if (Auth::user()->role_id != 4)
                             <a href="{{ route('vendor.create') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a>
+                            @endif
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -25,7 +27,9 @@
                                             <th scope="col">Email</th>
                                             <th scope="col">Address</th>
                                             <th scope="col">Products</th>
+                                            @if (Auth::user()->role_id != 4)
                                             <th class="text-right" scope="col">Action</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -54,9 +58,10 @@
                                                 </td>
                                                 <td scope="row">
                                                     <div class="text-right">
-                                                        <a type="button" href="" class="btn btn-light waves-effect waves-light m-1">
+                                                        <!-- <a type="button" href="{{ route('vendor.show',$item->id) }}" class="btn btn-light waves-effect waves-light m-1">
                                                             <i class="fa fa-eye"></i> <span>view</span>
-                                                        </a>
+                                                        </a> -->
+                                                        @if (Auth::user()->role_id != 4)
                                                         <a type="button" href="{{ route('vendor.edit',$item->id) }}" class="btn btn-warning waves-effect waves-light m-1">
                                                             <i class="fa fa-pencil"></i> <span>edit</span>
                                                         </a>
@@ -64,6 +69,7 @@
                                                             class="delete_btn btn btn-danger waves-effect waves-light m-1">
                                                             <i class="fa fa-trash-o"></i> <span>delete</span>
                                                         </a>
+                                                        @endif
                                                     </div>
                                                 </td>
                                             </tr>

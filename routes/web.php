@@ -77,22 +77,25 @@ Route::group([
     Route::get('/', 'AdminController@index')->name('admin_index');
 });
 
-// user management
 Route::group([
     'prefix' => 'user',
-    'middleware' => ['auth', 'check_user_is_active', 'super_admin'],
+    'middleware' => ['auth','check_user_is_active','user'],
     'namespace' => 'Admin'
 ], function () {
-    Route::get('/index', 'UserController@index')->name('admin_user_index');
-    Route::get('/view/{id}', 'UserController@view')->name('admin_user_view');
-    Route::get('/create', 'UserController@create')->name('admin_user_create');
-    Route::post('/store', 'UserController@store')->name('admin_user_store');
-    Route::get('/edit/{id}', 'UserController@edit')->name('admin_user_edit');
-    Route::post('/update', 'UserController@update')->name('admin_user_update');
-    Route::post('/delete', 'UserController@delete')->name('admin_user_delete');
 
-    Route::post('/test', 'UserController@test')->name('admin_user_test');
+    Route::get('/dashboard', 'AdminController@index')->name('admin_index');
 });
+
+Route::middleware(['auth', 'check_user_is_active','super_admin'])->group(function () {
+    Route::get('/index', 'Admin\UserController@index')->name('admin_user_index');
+    Route::get('/view/{id}', 'Admin\UserController@view')->name('admin_user_view');
+    Route::get('/create', 'Admin\UserController@create')->name('admin_user_create');
+    Route::post('/store', 'Admin\UserController@store')->name('admin_user_store');
+    Route::get('/edit/{id}', 'Admin\UserController@edit')->name('admin_user_edit');
+    Route::post('/update', 'Admin\UserController@update')->name('admin_user_update');
+    Route::post('/delete', 'Admin\UserController@delete')->name('admin_user_delete');
+
+    Route::post('/test', 'Admin\UserController@test')->name('admin_user_test');    });
 
 Route::group([
     'prefix' => 'user-role',

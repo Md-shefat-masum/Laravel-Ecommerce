@@ -15,27 +15,22 @@
                         <div class="card-body">
                             <table class="table table-bordered table-hover table-striped">
                                 <tr>
-                                    <td style="width: 40%">title</td>
+                                    <td style="width: 40%">Name</td>
                                     <td>:</td>
                                     <td>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci dignissimos, pariatur cum rem laborum nesciunt itaque labore excepturi accusantium?
-                                         Odio perspiciatis quos fugiat eos, reprehenderit atque aut voluptas eum ipsum.
-                                    </td>
+                                        {{$showWriter->name}}</td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 40%">title</td>
+                                    <td style="width: 40%">Description</td>
                                     <td>:</td>
                                     <td>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci dignissimos, pariatur cum rem laborum nesciunt itaque labore excepturi accusantium?
-                                         Odio perspiciatis quos fugiat eos, reprehenderit atque aut voluptas eum ipsum.
-                                    </td>
+                                        {{$showWriter->description}}  </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 40%">title</td>
+                                    <td style="width: 40%">Image</td>
                                     <td>:</td>
                                     <td>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci dignissimos, pariatur cum rem laborum nesciunt itaque labore excepturi accusantium?
-                                         Odio perspiciatis quos fugiat eos, reprehenderit atque aut voluptas eum ipsum.
+                                       <img src="{{$showWriter->image}}"/>
                                     </td>
                                 </tr>
                             </table>

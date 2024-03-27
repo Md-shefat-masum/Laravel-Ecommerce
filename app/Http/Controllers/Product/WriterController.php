@@ -77,6 +77,9 @@ class WriterController extends Controller
     public function show($id)
     {
         //
+        $showWriter = Writer::find($id);
+        return view('admin.product.writer.view',compact('showWriter'));
+
     }
 
     /**

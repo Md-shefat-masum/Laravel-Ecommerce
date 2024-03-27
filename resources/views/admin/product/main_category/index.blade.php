@@ -10,7 +10,9 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <h5 class="card-title">Main Categories</h5>
+                            @if (Auth::user()->role_id != 4)
                             <a href="{{ route('main_category.create') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a>
+                            @endif
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -20,7 +22,9 @@
                                             <th scope="col">#</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Products</th>
+                                            @if (Auth::user()->role_id != 4)
                                             <th class="text-right" scope="col">Action</th>
+                                           @endif 
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -47,6 +51,7 @@
                                                 </td>
                                                 <td scope="row">
                                                     <div class="text-right">
+                                                    @if (Auth::user()->role_id != 4)
                                                         <a type="button" href="{{ route('main_category.show',$item->id) }}" class="btn btn-light waves-effect waves-light m-1">
                                                             <i class="fa fa-eye"></i> <span>view</span>
                                                         </a>
@@ -57,6 +62,7 @@
                                                             class="delete_btn btn btn-danger waves-effect waves-light m-1">
                                                             <i class="fa fa-trash-o"></i> <span>delete</span>
                                                         </a>
+                                                        @endif
                                                     </div>
                                                 </td>
                                             </tr>

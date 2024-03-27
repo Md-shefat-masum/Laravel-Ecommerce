@@ -57,6 +57,8 @@ class LoginController extends Controller
             Auth::logout();
             return redirect()->back()->with('error','your accont is blocked');;
         }
+        
+
         return '/admin';
     }
 
