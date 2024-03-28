@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div style="height: 600px;">
-
+                     This is {{$user_role[0]['role_information']->name}}
                     </div>
                 </div>
             </div>

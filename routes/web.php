@@ -68,6 +68,15 @@ Route::group([
 
 });
 
+// Route::group([
+//     'prefix' => 'superadmin',
+//     'middleware' => ['auth','check_user_is_active','super_admin'],
+//     'namespace' => 'Admin'
+// ], function () {
+
+//     Route::get('/', 'AdminController@index')->name('admin_index');
+// });
+
 Route::group([
     'prefix' => 'admin',
     'middleware' => ['auth'],
@@ -76,6 +85,7 @@ Route::group([
 
     Route::get('/', 'AdminController@index')->name('admin_index');
 });
+
 
 Route::group([
     'prefix' => 'user',
@@ -112,7 +122,7 @@ Route::group([
 });
 
 Route::group([
-    'prefix' => 'admin/products',
+    'prefix' => 'products',
     'middleware' => ['auth'],
     'namespace' => 'Product'
 ], function () {

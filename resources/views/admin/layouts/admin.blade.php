@@ -208,16 +208,16 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-toggle="dropdown" href="javascript:void();">
-                                <span class="user-profile"><img src="{{ asset('contents/admin') }}/images/avatars/avatar-13.png" class="img-circle" alt="user avatar" /></span>
+                                <span class="user-profile"><img src="{{ asset('contents/admin') }}/images/avatars/{{Auth::user()->photo}}" class="img-circle" alt="user avatar" /></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li class="dropdown-item user-details">
                                     <a href="javaScript:void();">
                                         <div class="media">
-                                            <div class="avatar"><img class="align-self-start mr-3" src="{{ asset('contents/admin') }}/images/avatars/avatar-13.png" alt="user avatar" /></div>
+                                            <div class="avatar"><img class="align-self-start mr-3" src="{{ asset('contents/admin') }}/images/avatars/{{Auth::user()->photo}}" alt="user avatar" /></div>
                                             <div class="media-body">
-                                                <h6 class="mt-2 user-title">Sarajhon Mccoy</h6>
-                                                <p class="user-subtitle">mccoy@example.com</p>
+                                                <h6 class="mt-2 user-title">{{Auth::user()->first_name}}</h6>
+                                                <p class="user-subtitle">{{Auth::user()->email}}</p>
                                             </div>
                                         </div>
                                     </a>
